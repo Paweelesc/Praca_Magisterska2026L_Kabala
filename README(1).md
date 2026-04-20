@@ -1,115 +1,88 @@
-# Testy odsłuchowe — Auralizacja
-## Zawartość
+# SDP — Testy odsłuchowe auralizacji
 
-- `mushra_test.html` — Test MUSHRA (skala 0–100, ocena globalna)
-- `test_parametryczny.html` — Test parametryczny (skala 1–5, barwa/przestrzenność/pogłosowość)
-- `audio/` — folder na pliki audio (stwórz go sam)
+Projekt realizowany w ramach przedmiotu SDP.  
+Zespół: Anna Celińska, Jakub Kubiński, Patrycja Jaworek, Sandra Rojek, Paweł Kabała
 
 ---
 
-## Jak uruchomić
+## Cel projektu
 
-### 1. Skopiuj pliki audio
+Ocena zgodności nagrań auralizowanych z nagraniami referencyjnymi wykonanymi w rzeczywistych pomieszczeniach. Auralizacja polega na splocie nagrań bezechowych instrumentów z odpowiedziami impulsowymi pomieszczeń. Testy odsłuchowe pozwalają ocenić, jak wiernie ta metoda odwzorowuje rzeczywiste brzmienie.
 
-Stwórz folder `audio/` obok plików HTML i wrzuć do niego swoje nagrania:
+---
+
+## Zawartość repozytorium
 
 ```
-projekt/
-├── mushra_test.html
-├── test_parametryczny.html
+├── mushra_test.html          — Test MUSHRA (ocena globalna, skala 0–100)
+├── test_parametryczny.html   — Test parametryczny (4 atrybuty, skala 1–5)
 ├── README.md
 └── audio/
-    ├── skrzypce_sala_ref.wav
-    ├── skrzypce_sala_auraliz.wav
-    ├── skrzypce_sala_anchor.wav      ← plik referencyjny przepuszczony przez LP ~3500 Hz
-    ├── fortepian_koncert_ref.wav
-    ├── fortepian_koncert_auraliz.wav
-    ├── fortepian_koncert_anchor.wav
-    ├── gitara_studio_ref.wav
-    ├── gitara_studio_auraliz.wav
-    └── gitara_studio_anchor.wav
+    ├── ref/                  — nagrania referencyjne (rzeczywiste pomieszczenia)
+    ├── auraliz/              — nagrania auralizowane (splot bezechowe × IR)
+    └── anchor/               — kotwice (nagrania referencyjne po filtrze LP 2500 Hz)
 ```
 
-### 2. Uruchom przez serwer lokalny (WYMAGANE dla audio)
+---
 
-Przeglądarki blokują ładowanie plików audio z dysku bez serwera.
-Użyj jednej z metod:
+## Materiał testowy
 
-**VS Code — Live Server (najprostsze):**
-1. Zainstaluj rozszerzenie "Live Server" w VS Code
-2. Kliknij prawym przyciskiem na `mushra_test.html`
-3. Wybierz "Open with Live Server"
+**Instrumenty:** akordeon, wiolonczela, saksofon  
+**Pomieszczenia:** sala 123, korytarz ZEA, studio  
+**Pozycja mikrofonu:** na wprost źródła  
+**Liczba zadań:** 9 (3 instrumenty × 3 pomieszczenia)
 
-**Python (terminal):**
+---
+
+## Metodyka testów
+
+### Test MUSHRA (`mushra_test.html`)
+
+Ocena globalnego podobieństwa nagrania auralizowanego do referencyjnego.  
+W każdym zadaniu uczestnik ocenia 3 anonimowe próbki w skali 0–100:
+
+| Próbka | Opis |
+|--------|------|
+| Auralizowana | nagranie uzyskane przez splot z odpowiedzią impulsową |
+| Ukryta referencja | identyczna z jawną referencją — powinna uzyskać ~100 pkt |
+| Kotwica | nagranie referencyjne po filtrze LP 2500 Hz — powinna uzyskać ~0–20 pkt |
+
+Kolejność próbek jest losowa. Uczestnik nie wie, która jest która.
+
+### Test parametryczny (`test_parametryczny.html`)
+
+Ocena wybranych cech percepcyjnych w skali 1–5 (1 = bardzo mała zgodność, 5 = bardzo duża zgodność).
+
+| Atrybut | Co oceniamy |
+|---------|-------------|
+| Barwa | Czy instrument brzmi tak samo — bas, wysokie tony, ogólny charakter |
+| Przestrzenność | Czy czujesz się w tym samym miejscu — odległość i kierunek źródła |
+| Naturalność | Czy brzmi jak prawdziwy instrument — brak artefaktów i zniekształceń |
+| Pogłos | Czy pomieszczenie brzmi tak samo — wybrzmiewanie, echo, odbicia |
+
+---
+
+## Uruchomienie
+
+Przeglądarki blokują ładowanie plików audio z dysku lokalnego — wymagany jest serwer lokalny.
+
+**VS Code (zalecane):**
+1. Zainstaluj rozszerzenie **Live Server** (Ritwick Dey)
+2. Kliknij prawym przyciskiem na `mushra_test.html` → **Open with Live Server**
+
+**Python:**
 ```bash
-cd folder_z_plikami
 python -m http.server 8000
-# Otwórz: http://localhost:8000/mushra_test.html
-```
-
-**Node.js:**
-```bash
-npx serve .
-```
-
----
-
-## Jak dostosować zadania
-
-W obu plikach HTML na górze skryptu `<script>` znajdziesz tablicę `TASKS`:
-
-```javascript
-const TASKS = [
-  {
-    id: 1,
-    instrument: 'Skrzypce',
-    room: 'Sala kameralna',
-    position: 'Na wprost źródła',
-    refFile: 'audio/skrzypce_sala_ref.wav',
-    // mushra_test.html ma tu też tablicę samples[] z typami próbek
-  },
-  // ...
-];
-```
-
-Zmień nazwy plików i opisy na swoje. Możesz dodać więcej zadań kopiując blok `{ id: ... }`.
-
----
-
-## Co robi kotwica (anchor)?
-
-W teście MUSHRA kotwica to próbka o celowo obniżonej jakości.
-Najłatwiej ją wygenerować w Audacity lub Python:
-
-```python
-import numpy as np
-from scipy.io import wavfile
-from scipy.signal import butter, sosfilt
-
-def make_anchor(input_file, output_file, cutoff=3500):
-    sr, data = wavfile.read(input_file)
-    sos = butter(4, cutoff / (sr / 2), btype='low', output='sos')
-    filtered = sosfilt(sos, data.astype(float), axis=0)
-    wavfile.write(output_file, sr, filtered.astype(data.dtype))
-
-make_anchor('audio/skrzypce_sala_ref.wav', 'audio/skrzypce_sala_anchor.wav')
+# http://localhost:8000/mushra_test.html
 ```
 
 ---
 
 ## Wyniki
 
-Po zakończeniu testu kliknij "Eksportuj wyniki CSV". Plik CSV zawiera:
-- dane uczestnika (imię, doświadczenie, sprzęt)
-- oceny wszystkich próbek/parametrów
-- datę i godzinę
-
-Pliki CSV z wynikami 5 uczestników możesz zebrać i przeanalizować w Excelu lub Python (pandas).
-
----
-
-## Kolejność testów
+Po zakończeniu każdego testu należy kliknąć **Eksportuj wyniki CSV**.  
+Plik zawiera: dane uczestnika, sprzęt odsłuchowy, oceny wszystkich próbek/atrybutów, datę.
 
 Zalecana kolejność dla każdego uczestnika:
-1. `mushra_test.html` — test MUSHRA (globalny)
-2. `test_parametryczny.html` — test parametryczny (szczegółowy)
+1. `mushra_test.html`
+2. `test_parametryczny.html`
