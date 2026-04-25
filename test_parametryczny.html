@@ -27,13 +27,13 @@
     --info-border: #a8c0d4;
     --warn-bg: #fdf6e3;
     --warn-border: #d4b896;
-    --param1: #2d5a3d;   /* fluktuacje - zielony */
+    --param1: #2d5a3d;
     --param1-bg: #eaf2ed;
-    --param2: #1a3a5c;   /* barwność - granatowy */
+    --param2: #1a3a5c;
     --param2-bg: #eaf0f7;
-    --param3: #5c3a1a;   /* szorstkość - brązowy */
+    --param3: #5c3a1a;
     --param3-bg: #fdf6e3;
-    --param4: #5c1a3a;   /* ostrość - bordowy */
+    --param4: #5c1a3a;
     --param4-bg: #f7eaf2;
   }
 
@@ -116,10 +116,9 @@
     margin-bottom: 1rem;
   }
 
-  /* PARAMS LEGEND */
   .params-legend {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     margin: 1rem 0 1.5rem;
   }
@@ -148,7 +147,6 @@
 
   .param-legend-item .param-desc { font-size: 12px; color: var(--text2); }
 
-  /* FORM */
   .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -185,7 +183,6 @@
     box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.1);
   }
 
-  /* BUTTONS */
   .btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
   .btn {
@@ -212,7 +209,6 @@
 
   .btn-primary:hover { background: #254d34; }
 
-  /* PROGRESS */
   .progress-bar-wrap {
     display: flex;
     align-items: center;
@@ -239,7 +235,6 @@
     font-family: 'DM Mono', monospace;
   }
 
-  /* TASK HEADER */
   .task-header {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -265,7 +260,6 @@
   .task-meta h2 { font-size: 16px; font-weight: 600; }
   .task-meta p { font-size: 12px; color: var(--text2); margin-top: 2px; }
 
-  /* PLAYERS */
   .players-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -330,20 +324,12 @@
     border-radius: 2px;
     display: none;
     margin-left: 0 !important;
+    background: #fff;
   }
-
-  .play-btn.playing-ref .stop-icon { background: #fff; }
-  .play-btn.playing-auraliz .stop-icon { background: #fff; }
 
   .player-name { font-size: 14px; font-weight: 600; }
   .ref-card .player-name { color: var(--accent); }
   .auraliz-card .player-name { color: var(--info); }
-
-  .player-file {
-    font-size: 11px;
-    color: var(--text3);
-    font-family: 'DM Mono', monospace;
-  }
 
   .player-tag {
     margin-left: auto;
@@ -357,7 +343,6 @@
   .ref-tag { background: var(--accent); }
   .auraliz-tag { background: var(--info); }
 
-  /* WAVEFORM */
   .waveform {
     height: 28px;
     background: var(--surface2);
@@ -391,7 +376,6 @@
 
   .waveform-bar { flex: 1; border-radius: 1px; background: var(--border2); }
 
-  /* RATING SECTION */
   .rating-section { margin-bottom: 0.75rem; }
 
   .param-block {
@@ -411,6 +395,7 @@
     align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 1rem;
+    gap: 12px;
   }
 
   .param-header-left h3 { font-size: 15px; font-weight: 600; }
@@ -421,9 +406,7 @@
 
   .param-header-left p { font-size: 12px; color: var(--text2); margin-top: 2px; }
 
-  .param-score-display {
-    text-align: right;
-  }
+  .param-score-display { text-align: right; }
 
   .param-score-number {
     font-family: 'DM Mono', monospace;
@@ -442,7 +425,6 @@
     margin-top: 1px;
   }
 
-  /* STAR / BUTTON RATING */
   .rating-buttons {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -480,7 +462,6 @@
     line-height: 1.2;
   }
 
-  /* Active states per param */
   .param-fluktuacje .rating-btn.active { background: var(--param1); border-color: var(--param1); }
   .param-barwnosc   .rating-btn.active { background: var(--param2); border-color: var(--param2); }
   .param-szorstkos  .rating-btn.active { background: var(--param3); border-color: var(--param3); }
@@ -489,7 +470,6 @@
   .rating-btn.active .btn-num,
   .rating-btn.active .btn-lbl { color: #ffffff; }
 
-  /* SCALE LABELS */
   .scale-ends {
     display: flex;
     justify-content: space-between;
@@ -498,7 +478,6 @@
     color: var(--text3);
   }
 
-  /* RESULTS */
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -582,7 +561,6 @@
   .sp3 { background: var(--param3-bg); color: var(--param3); }
   .sp4 { background: var(--param4-bg); color: var(--param4); }
 
-  /* NOTES */
   .notes-field {
     width: 100%;
     min-height: 80px;
@@ -603,11 +581,16 @@
     box-shadow: 0 0 0 3px rgba(45,90,61,0.1);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     .players-row { grid-template-columns: 1fr; }
     .params-legend { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 520px) {
+    .form-row { grid-template-columns: 1fr; }
     .rating-buttons { grid-template-columns: repeat(5, 1fr); }
+    .stats-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -623,29 +606,28 @@
     <span class="badge">Skala 1–5</span>
   </div>
 
-  <!-- ========== PHASE: INTRO ========== -->
   <div id="phase-intro" class="phase active">
     <div class="card">
       <div class="card-title">O teście</div>
       <p style="font-size:14px;color:var(--text2);margin-bottom:1rem">
         W każdym zadaniu porównujesz <strong>nagranie referencyjne</strong> z <strong>nagraniem auralizowanym</strong> i oceniasz zgodność czterech cech percepcyjnych w skali 1–5:
       </p>
-      <div class="params-legend" style="grid-template-columns: repeat(4, 1fr)">
+      <div class="params-legend">
         <div class="param-legend-item p1">
           <div class="param-name">Barwa</div>
-          <div class="param-desc">Czy instrument brzmi tak samo jak w nagraniu referencyjnym? Zwróć uwagę czy nie słyszysz różnicy w brzmieniu?</div>
+          <div class="param-desc">Czy instrument brzmi tak samo jak w nagraniu referencyjnym?</div>
         </div>
         <div class="param-legend-item p2">
           <div class="param-name">Przestrzenność</div>
-          <div class="param-desc">Czy czujesz się w tym samym miejscu — odległość, kierunek źródła?</div>
+          <div class="param-desc">Czy odległość, kierunek i scena dźwiękowa są podobne?</div>
         </div>
         <div class="param-legend-item p3">
           <div class="param-name">Naturalność</div>
-          <div class="param-desc">Czy brzmi jak prawdziwy instrument — bez artefaktów i zniekształceń?</div>
+          <div class="param-desc">Czy dźwięk brzmi jak prawdziwy instrument bez sztuczności?</div>
         </div>
         <div class="param-legend-item p4">
           <div class="param-name">Pogłos</div>
-          <div class="param-desc">Czy pomieszczenie brzmi tak samo — czas wybrzmiewania, echo, odbicia?</div>
+          <div class="param-desc">Czy wybrzmiewanie i odbicia pomieszczenia są podobne?</div>
         </div>
       </div>
 
@@ -660,7 +642,7 @@
       </div>
 
       <div class="info-box">
-        Możesz swobodnie przełączać się między referencją a auralizacją. Oceniaj <strong>zgodność względem referencji</strong>, nie ogólną jakość dźwięku. W każdym zadaniu oceniasz jeden instrument w jednym pomieszczeniu.
+        Możesz swobodnie przełączać się między referencją a auralizacją. Oceniaj zgodność względem referencji, nie ogólną jakość dźwięku.
       </div>
     </div>
 
@@ -702,26 +684,24 @@
 
     <div class="btn-row">
       <button class="btn btn-primary" onclick="startTest()">Rozpocznij test →</button>
-      <span style="font-size:13px;color:var(--text3)">9 zadań, ok. 15–20 min</span>
+      <span style="font-size:13px;color:var(--text3)">10 zadań, ok. 20–25 min</span>
     </div>
   </div>
 
-  <!-- ========== PHASE: TEST ========== -->
   <div id="phase-test" class="phase">
     <div class="progress-bar-wrap">
       <div class="progress-steps" id="progress-steps"></div>
-      <span class="progress-label" id="progress-label">Zadanie 1 z 3</span>
+      <span class="progress-label" id="progress-label">Zadanie 1 z 10</span>
     </div>
 
     <div class="task-header">
       <span class="task-number" id="task-number-badge">Zadanie 1</span>
       <div class="task-meta">
-        <h2 id="task-title">Skrzypce — Sala kameralna</h2>
-        <p id="task-subtitle">Pozycja: na wprost | Oceń zgodność auralizacji z referencją w 3 parametrach</p>
+        <h2 id="task-title">Instrument — Pomieszczenie</h2>
+        <p id="task-subtitle">Pozycja: —</p>
       </div>
     </div>
 
-    <!-- Players -->
     <div class="players-row">
       <div class="player-card ref-card">
         <div class="player-top">
@@ -731,7 +711,6 @@
           </button>
           <div style="flex:1">
             <div class="player-name">Nagranie referencyjne</div>
-            <div class="player-file" id="ref-file">—</div>
           </div>
           <span class="player-tag ref-tag">REF</span>
         </div>
@@ -749,7 +728,6 @@
           </button>
           <div style="flex:1">
             <div class="player-name">Nagranie auralizowane</div>
-            <div class="player-file" id="auraliz-file">—</div>
           </div>
           <span class="player-tag auraliz-tag">AUR</span>
         </div>
@@ -760,10 +738,8 @@
       </div>
     </div>
 
-    <!-- Rating blocks -->
     <div class="rating-section" id="rating-section"></div>
 
-    <!-- Notes -->
     <div class="card" style="margin-top:0.25rem">
       <div class="card-title">Uwagi (opcjonalnie)</div>
       <textarea class="notes-field" id="notes-field" placeholder="Wpisz dodatkowe obserwacje dotyczące tego zadania..."></textarea>
@@ -772,11 +748,10 @@
     <div class="btn-row" style="margin-top:1rem">
       <button class="btn" id="btn-prev" onclick="prevTask()" style="display:none">← Poprzednie</button>
       <button class="btn btn-primary" id="btn-next" onclick="nextTask()">Następne zadanie →</button>
-      <span id="validation-msg" style="font-size:13px;color:var(--danger);display:none">Oceń wszystkie 3 parametry zanim przejdziesz dalej</span>
+      <span id="validation-msg" style="font-size:13px;color:var(--danger);display:none">Oceń wszystkie 4 parametry zanim przejdziesz dalej</span>
     </div>
   </div>
 
-  <!-- ========== PHASE: RESULTS ========== -->
   <div id="phase-results" class="phase">
     <div class="card">
       <div class="card-title">Wyniki testu parametrycznego</div>
@@ -802,49 +777,49 @@
 </div>
 
 <script>
-// ============================================================
-// KONFIGURACJA ZADAŃ
-// Edytuj poniższe dane. Pliki audio w folderze audio/.
-// ============================================================
-
 const TASKS = [
-  // ── AKORDEON ──────────────────────────────────────────────
   {
     id: 1,
-    instrument: 'Akordeon',
-    room: 'Sala 123',
+    instrument: 'Gitara klasyczna',
+    room: 'Korytarz ZEA',
     position: 'Na wprost',
-    refFile:     'audio/ref/sala123_wprost_akordeon.wav',
-    auralizFile: 'audio/auraliz/Akordeon_123_nawprost_Aura.wav',
+    refFile:     'audio/ref/korytarzZEA_wprost_gitara_klasyczna.wav',
+    auralizFile: 'audio/auraliz/GitaraKlas_Korytarz_nawprost_Aura.wav',
   },
   {
     id: 2,
-    instrument: 'Akordeon',
-    room: 'Korytarz ZEA',
-    position: 'Na wprost',
-    refFile:     'audio/ref/korytarzZEA_wprost_akordeon.wav',
-    auralizFile: 'audio/auraliz/Akordeon_Korytarz_nawprost_Aura.wav',
+    instrument: 'Gitara klasyczna',
+    room: 'Sala 123',
+    position: 'Prawe ucho',
+    refFile:     'audio/ref/sala123_praweucho_gitara_klasyczna.wav',
+    auralizFile: 'audio/auraliz/GitaraKlas_123_praweucho_Aura.wav',
   },
   {
     id: 3,
-    instrument: 'Akordeon',
-    room: 'Studio',
+    instrument: 'Kontrabas palcami',
+    room: 'Korytarz ZEA',
     position: 'Na wprost',
-    refFile:     'audio/ref/Studio_wprost_akordeon.wav',
-    auralizFile: 'audio/auraliz/Akordeon_Studio_wprost_Aura.wav',
+    refFile:     'audio/ref/korytarzZEA_wprost_kontrabaspalce.wav',
+    auralizFile: 'audio/auraliz/KontrabasPalce_Korytarz_nawprost_Aura.wav',
   },
-
-  // ── WIOLONCZELA ───────────────────────────────────────────
   {
     id: 4,
-    instrument: 'Wiolonczela',
-    room: 'Sala 123',
+    instrument: 'Kontrabas palcami',
+    room: 'Studio',
     position: 'Na wprost',
-    refFile:     'audio/ref/sala123_wprost_wiolonczela.wav',
-    auralizFile: 'audio/auraliz/Wiolonczela_123_nawprost_Aura.wav',
+    refFile:     'audio/ref/studio_wprost_kontrabaspalce.wav',
+    auralizFile: 'audio/auraliz/KontrabasPalce_studio_nawprost_Aura.wav',
   },
   {
     id: 5,
+    instrument: 'Kontrabas smyczkiem',
+    room: 'Studio',
+    position: 'Lewe ucho',
+    refFile:     'audio/ref/studio_leweucho_kontrabas_smyczek.wav',
+    auralizFile: 'audio/auraliz/KontrabasSmyczek_studio_leweucho_Aura.wav',
+  },
+  {
+    id: 6,
     instrument: 'Wiolonczela',
     room: 'Korytarz ZEA',
     position: 'Na wprost',
@@ -852,38 +827,36 @@ const TASKS = [
     auralizFile: 'audio/auraliz/Wiolonczela_korytarz_nawprost_Aura.wav',
   },
   {
-    id: 6,
-    instrument: 'Wiolonczela',
-    room: 'Studio',
-    position: 'Na wprost',
-    refFile:     'audio/ref/studio_wprost_wiolonczela.wav',
-    auralizFile: 'audio/auraliz/Wiolonczela_studio_nawprost_Aura.wav',
-  },
-
-  // ── SAKSOFON ──────────────────────────────────────────────
-  {
     id: 7,
-    instrument: 'Saksofon',
+    instrument: 'Wiolonczela',
     room: 'Sala 123',
-    position: 'Na wprost',
-    refFile:     'audio/ref/sala123_wprost_saksofon.wav',
-    auralizFile: 'audio/auraliz/Saksofon_123_nawprost_Aura.wav',
+    position: 'Oddalone',
+    refFile:     'audio/ref/sala123_3lawka_wiolonczela.wav',
+    auralizFile: 'audio/auraliz/Wiolonczela_123_oddalone_Aura.wav',
   },
   {
     id: 8,
-    instrument: 'Saksofon',
-    room: 'Korytarz ZEA',
-    position: 'Na wprost',
-    refFile:     'audio/ref/korytarzZEA_wprost_saksofon.wav',
-    auralizFile: 'audio/auraliz/Sasksofon_korytarz_nawprost_Aura.wav',
+    instrument: 'Flet',
+    room: 'Studio',
+    position: 'Lewe ucho',
+    refFile:     'audio/ref/studio_leweucho_flet.wav',
+    auralizFile: 'audio/auraliz/flet_studio_Leweucho_Aura.wav',
   },
   {
     id: 9,
     instrument: 'Saksofon',
     room: 'Studio',
-    position: 'Na wprost',
-    refFile:     'audio/ref/Studio_wprost_saksofon.wav',
-    auralizFile: 'audio/auraliz/Saksofon_studio_nawprost_Aura.wav',
+    position: 'Lewe ucho',
+    refFile:     'audio/ref/studio_leweucho_saksofon.wav',
+    auralizFile: 'audio/auraliz/Saksofon_studio_leweucho_Aura.wav',
+  },
+  {
+    id: 10,
+    instrument: 'Akordeon',
+    room: 'Korytarz ZEA',
+    position: 'Oddalone',
+    refFile:     'audio/ref/korytarzZEA_daleko_akordeon.wav',
+    auralizFile: 'audio/auraliz/Akordeon_Korytarz_oddalone_Aura.wav',
   },
 ];
 
@@ -892,7 +865,7 @@ const PARAMS = [
     key: 'barwa',
     label: 'Barwa',
     cssClass: 'param-fluktuacje',
-    desc: 'Czy instrument brzmi tak samo jak w nagraniu referencyjnym? Zwróć uwagę czy nie słyszysz różnicy w brzmieniu — np. czy nie brakuje basu, czy nie ma za dużo wysokich tonów, czy ogólny charakter dźwięku jest podobny.',
+    desc: 'Czy instrument brzmi tak samo jak w nagraniu referencyjnym?',
     scaleMin: 'Zupełnie inaczej',
     scaleMax: 'Identycznie',
   },
@@ -900,7 +873,7 @@ const PARAMS = [
     key: 'przestrzennosc',
     label: 'Przestrzenność',
     cssClass: 'param-barwnosc',
-    desc: 'Czy czujesz się w tym samym miejscu co przy referencji? Zwróć uwagę na to, jak daleko jest instrument, czy dźwięk otacza Cię podobnie, czy źródło dźwięku jest w tym samym miejscu w przestrzeni.',
+    desc: 'Czy odległość, kierunek i scena dźwiękowa są podobne?',
     scaleMin: 'Zupełnie inaczej',
     scaleMax: 'Identycznie',
   },
@@ -908,7 +881,7 @@ const PARAMS = [
     key: 'naturalnosc',
     label: 'Naturalność',
     cssClass: 'param-szorstkos',
-    desc: 'Czy nagranie brzmi jak prawdziwy instrument w prawdziwym pomieszczeniu? Zwróć uwagę na to, czy coś brzmi "sztucznie", "plastycznie" lub czy słyszysz jakieś zniekształcenia, artefakty albo nienaturalne brzmienie.',
+    desc: 'Czy dźwięk brzmi naturalnie, bez sztuczności i artefaktów?',
     scaleMin: 'Bardzo nienaturalnie',
     scaleMax: 'Bardzo naturalnie',
   },
@@ -916,7 +889,7 @@ const PARAMS = [
     key: 'poglos',
     label: 'Pogłos',
     cssClass: 'param-ostros',
-    desc: 'Czy pomieszczenie brzmi tak samo? Zwróć uwagę na to, jak długo dźwięk wybrzmiewає po zagraniu nuty, ile słyszysz echa i odbić od ścian, czy pomieszczenie wydaje się duże/małe w podobny sposób.',
+    desc: 'Czy wybrzmiewanie i odbicia pomieszczenia są podobne?',
     scaleMin: 'Zupełnie inaczej',
     scaleMax: 'Identycznie',
   },
@@ -924,20 +897,12 @@ const PARAMS = [
 
 const SCORE_LABELS = ['', 'Bardzo mała', 'Mała', 'Umiarkowana', 'Duża', 'Bardzo duża'];
 
-// ============================================================
-// STAN
-// ============================================================
-
 let currentTask = 0;
-let scores = {};    // scores[taskId][paramKey] = 1..5 | null
-let notes = {};     // notes[taskId] = string
+let scores = {};
+let notes = {};
 let audioObjects = {};
 let playingId = null;
 let playTimers = {};
-
-// ============================================================
-// INIT
-// ============================================================
 
 function initScores() {
   TASKS.forEach(t => {
@@ -958,7 +923,10 @@ function preloadAudio() {
 
 function startTest() {
   const name = document.getElementById('participant-name').value.trim();
-  if (!name) { alert('Proszę podać imię lub pseudonim uczestnika.'); return; }
+  if (!name) {
+    alert('Proszę podać imię lub pseudonim uczestnika.');
+    return;
+  }
   initScores();
   preloadAudio();
   currentTask = 0;
@@ -966,16 +934,13 @@ function startTest() {
   renderTask();
 }
 
-// ============================================================
-// AUDIO
-// ============================================================
-
 function stopAll() {
-  Object.values(audioObjects).forEach(a => { a.pause(); a.currentTime = 0; });
-  Object.keys(playTimers).forEach(k => { clearInterval(playTimers[k]); delete playTimers[k]; });
-  document.querySelectorAll('.play-btn').forEach(b => {
-    b.classList.remove('playing-ref', 'playing-auraliz');
+  Object.values(audioObjects).forEach(a => {
+    a.pause();
+    a.currentTime = 0;
   });
+  Object.keys(playTimers).forEach(k => { clearInterval(playTimers[k]); delete playTimers[k]; });
+  document.querySelectorAll('.play-btn').forEach(b => b.classList.remove('playing-ref', 'playing-auraliz'));
   ['fill-ref', 'fill-auraliz'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.width = '0%';
@@ -1004,11 +969,11 @@ function toggleAudio(type) {
     audio.currentTime = 0;
     audio.play().catch(() => {});
 
-    if (fill && audio.duration) {
-      playTimers[type] = setInterval(() => {
-        if (audio.duration) fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
-      }, 50);
-    }
+    playTimers[type] = setInterval(() => {
+      if (audio.duration && fill) {
+        fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      }
+    }, 50);
 
     audio.onended = () => {
       if (btn) btn.classList.remove(playingClass);
@@ -1019,10 +984,6 @@ function toggleAudio(type) {
     };
   }
 }
-
-// ============================================================
-// RENDER
-// ============================================================
 
 function showPhase(p) {
   document.querySelectorAll('.phase').forEach(el => el.classList.remove('active'));
@@ -1056,21 +1017,14 @@ function renderTask() {
 
   document.getElementById('task-number-badge').textContent = `Zadanie ${t.id}`;
   document.getElementById('task-title').textContent = `${t.instrument} — ${t.room}`;
-  document.getElementById('task-subtitle').textContent =
-    `Pozycja: ${t.position} | Oceń zgodność auralizacji z referencją w 3 parametrach`;
-  document.getElementById('ref-file').textContent = t.refFile.split('/').pop();
-  document.getElementById('auraliz-file').textContent = t.auralizFile.split('/').pop();
+  document.getElementById('task-subtitle').textContent = `Pozycja: ${t.position}`;
 
-  // Reset players
-  document.getElementById('play-ref').classList.remove('playing-ref', 'playing-auraliz');
-  document.getElementById('play-auraliz').classList.remove('playing-ref', 'playing-auraliz');
   document.getElementById('fill-ref').style.width = '0%';
   document.getElementById('fill-auraliz').style.width = '0%';
 
   generateWaveBars('bars-ref', 44);
   generateWaveBars('bars-auraliz', 44);
 
-  // Notes
   document.getElementById('notes-field').value = notes[t.id] || '';
   document.getElementById('notes-field').oninput = (e) => { notes[t.id] = e.target.value; };
 
@@ -1086,17 +1040,17 @@ function renderTask() {
 function renderRatings() {
   const t = TASKS[currentTask];
   const section = document.getElementById('rating-section');
-  section.innerHTML = PARAMS.map((p, pi) => {
+  section.innerHTML = PARAMS.map((p) => {
     const currentVal = scores[t.id][p.key];
     const buttons = [1, 2, 3, 4, 5].map(n => `
-      <button class="rating-btn ${currentVal === n ? 'active' : ''}"
+      <button type="button" class="rating-btn ${currentVal === n ? 'active' : ''}"
         onclick="setScore(${t.id}, '${p.key}', ${n})">
         <span class="btn-num">${n}</span>
         <span class="btn-lbl">${SCORE_LABELS[n]}</span>
       </button>`).join('');
 
     return `
-    <div class="param-block ${p.cssClass}" id="param-block-${p.key}">
+    <div class="param-block ${p.cssClass}">
       <div class="param-header">
         <div class="param-header-left">
           <h3>${p.label}</h3>
@@ -1121,13 +1075,11 @@ function renderRatings() {
 function setScore(taskId, paramKey, val) {
   scores[taskId][paramKey] = val;
 
-  // Update display
   const display = document.getElementById('pscore-' + paramKey);
   const labelEl = document.getElementById('pscorelab-' + paramKey);
   if (display) display.textContent = val;
   if (labelEl) labelEl.textContent = SCORE_LABELS[val];
 
-  // Update buttons
   const btns = document.getElementById('rating-btns-' + paramKey);
   if (btns) {
     btns.querySelectorAll('.rating-btn').forEach((b, i) => {
@@ -1135,10 +1087,6 @@ function setScore(taskId, paramKey, val) {
     });
   }
 }
-
-// ============================================================
-// NAVIGATION
-// ============================================================
 
 function nextTask() {
   const t = TASKS[currentTask];
@@ -1171,15 +1119,12 @@ function prevTask() {
 
 function resetTest() {
   currentTask = 0;
-  scores = {}; notes = {};
+  scores = {};
+  notes = {};
   audioObjects = {};
   document.getElementById('participant-name').value = '';
   showPhase('intro');
 }
-
-// ============================================================
-// RESULTS
-// ============================================================
 
 function showResults() {
   const avgs = {};
@@ -1223,18 +1168,15 @@ function showResults() {
 
   document.getElementById('results-table').innerHTML = html;
 
-  // Notes summary
   const notesList = TASKS.filter(t => notes[t.id] && notes[t.id].trim()).map(t =>
     `<div><strong>Zadanie ${t.id} (${t.instrument}):</strong> ${notes[t.id]}</div>`).join('');
   if (notesList) {
     document.getElementById('notes-summary').innerHTML = notesList;
     document.getElementById('notes-summary-card').style.display = 'block';
+  } else {
+    document.getElementById('notes-summary-card').style.display = 'none';
   }
 }
-
-// ============================================================
-// CSV EXPORT
-// ============================================================
 
 function exportCSV() {
   const name = document.getElementById('participant-name').value || 'uczestnik';
@@ -1248,10 +1190,10 @@ function exportCSV() {
   TASKS.forEach(t => {
     csv += [
       name, exp, hw, hwModel, date, t.id, t.instrument, t.room, t.position,
-      scores[t.id]['barwa']         ?? '',
+      scores[t.id]['barwa'] ?? '',
       scores[t.id]['przestrzennosc'] ?? '',
-      scores[t.id]['naturalnosc']    ?? '',
-      scores[t.id]['poglos']         ?? '',
+      scores[t.id]['naturalnosc'] ?? '',
+      scores[t.id]['poglos'] ?? '',
       '"' + (notes[t.id] || '').replace(/"/g, '""') + '"'
     ].join(',') + '\n';
   });

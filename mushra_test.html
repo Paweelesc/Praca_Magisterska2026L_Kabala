@@ -77,11 +77,9 @@
     white-space: nowrap;
   }
 
-  /* PHASE SYSTEM */
   .phase { display: none; }
   .phase.active { display: block; }
 
-  /* CARDS */
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -99,7 +97,6 @@
     margin-bottom: 1rem;
   }
 
-  /* INTRO PHASE */
   .scale-row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -150,7 +147,6 @@
     margin-bottom: 1rem;
   }
 
-  /* FORM */
   .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -187,7 +183,6 @@
     box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.1);
   }
 
-  /* BUTTONS */
   .btn-row {
     display: flex;
     gap: 10px;
@@ -225,7 +220,6 @@
     color: var(--danger);
   }
 
-  /* PROGRESS */
   .progress-bar-wrap {
     display: flex;
     align-items: center;
@@ -255,7 +249,6 @@
     font-family: 'DM Mono', monospace;
   }
 
-  /* REFERENCE PLAYER */
   .ref-player {
     display: flex;
     align-items: center;
@@ -332,7 +325,6 @@
     border-radius: 4px;
   }
 
-  /* SAMPLE ROWS */
   .samples-section-title {
     font-size: 11px;
     font-weight: 600;
@@ -477,7 +469,6 @@
     font-family: 'DM Mono', monospace;
   }
 
-  /* TASK HEADER */
   .task-header {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -511,7 +502,6 @@
     margin-top: 2px;
   }
 
-  /* RESULTS */
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -595,18 +585,6 @@
   .type-hidden_ref { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent-border); }
   .type-anchor { background: var(--danger-bg); color: var(--danger); border: 1px solid #d4a0a0; }
 
-  /* AUDIO STATUS */
-  .audio-status {
-    font-size: 11px;
-    color: var(--text3);
-    font-family: 'DM Mono', monospace;
-    margin-top: 4px;
-  }
-
-  .audio-status.loaded { color: var(--accent); }
-  .audio-status.error { color: var(--danger); }
-
-  /* WAVEFORM PLACEHOLDER */
   .waveform {
     height: 32px;
     background: var(--surface2);
@@ -654,7 +632,6 @@
 
 <div class="page-wrap">
 
-  <!-- HEADER -->
   <div class="site-header">
     <div>
       <h1>Test MUSHRA</h1>
@@ -663,7 +640,6 @@
     <span class="badge">v1.0</span>
   </div>
 
-  <!-- ========== PHASE: INTRO ========== -->
   <div id="phase-intro" class="phase active">
     <div class="card">
       <div class="card-title">Instrukcja testu</div>
@@ -681,7 +657,7 @@
         W każdym zadaniu słyszysz <strong>referencję</strong> (jawne nagranie referencyjne) oraz 3 anonimowe próbki:<br>
         • <strong>Auralizowana</strong> — nagranie uzyskane przez splot z odpowiedzią impulsową<br>
         • <strong>Ukryta referencja</strong> — identyczna z referencją, powinna dostać ~100 pkt<br>
-        • <strong>Kotwica</strong> — sygnał celowo obniżonej jakości (filtr LP 3,5 kHz), powinna dostać ~0–20 pkt
+        • <strong>Kotwica</strong> — sygnał celowo obniżonej jakości (filtr LP 2,2 kHz), powinna dostać niską ocenę
       </div>
       <div class="warn-box">
         Próbki są prezentowane w <strong>losowej kolejności</strong> i anonimowo (Próbka A/B/C). Możesz dowolnie przełączać się między próbkami. Oceniaj zgodność z referencją, nie ogólną jakość dźwięku.
@@ -726,26 +702,24 @@
 
     <div class="btn-row">
       <button class="btn btn-primary" onclick="startTest()">Rozpocznij test →</button>
-      <span style="font-size:13px;color:var(--text3)">9 zadań, ok. 15–20 min</span>
+      <span style="font-size:13px;color:var(--text3)">10 zadań, ok. 20–25 min</span>
     </div>
   </div>
 
-  <!-- ========== PHASE: TEST ========== -->
   <div id="phase-test" class="phase">
     <div class="progress-bar-wrap">
       <div class="progress-steps" id="progress-steps"></div>
-      <span class="progress-label" id="progress-label">Zadanie 1 z 3</span>
+      <span class="progress-label" id="progress-label">Zadanie 1 z 10</span>
     </div>
 
     <div class="task-header">
       <span class="task-number" id="task-number-badge">Zadanie 1</span>
       <div class="task-meta">
-        <h2 id="task-title">Skrzypce — Sala kameralna</h2>
-        <p id="task-subtitle">Pozycja mikrofonu: na wprost | Plik referencyjny: skrzypce_sala_ref.wav</p>
+        <h2 id="task-title">Instrument — Pomieszczenie</h2>
+        <p id="task-subtitle">Pozycja mikrofonu: na wprost</p>
       </div>
     </div>
 
-    <!-- Reference player -->
     <div class="ref-player">
       <button class="play-btn" id="play-ref" onclick="toggleAudio('ref')">
         <svg class="play-icon" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
@@ -762,7 +736,6 @@
       <span class="ref-tag">REF</span>
     </div>
 
-    <!-- Samples -->
     <div class="samples-section-title">Próbki do oceny</div>
     <div id="samples-container"></div>
 
@@ -773,7 +746,6 @@
     </div>
   </div>
 
-  <!-- ========== PHASE: RESULTS ========== -->
   <div id="phase-results" class="phase">
     <div class="card">
       <div class="card-title">Wyniki testu MUSHRA</div>
@@ -796,163 +768,145 @@
     </div>
   </div>
 
-</div><!-- /page-wrap -->
+</div>
 
 <script>
-// ============================================================
-// KONFIGURACJA ZADAŃ
-// Edytuj poniższe dane, aby dostosować do swoich próbek.
-// Pliki audio umieść w folderze audio/ obok tego pliku HTML.
-// ============================================================
-
-// ============================================================
-// NAZWY PLIKÓW — struktura folderów:
-//
-//   audio/
-//   ├── ref/          ← z folderu Pomieszczenia_ref
-//   ├── auraliz/      ← z folderu Nagrania_Auralizowane
-//   └── anchor/       ← z folderu ANCHORS
-//
-// Każde zadanie = 1 instrument × 1 pomieszczenie × pozycja nawprost
-// ============================================================
-
 const TASKS = [
-  // ── AKORDEON ──────────────────────────────────────────────
   {
     id: 1,
-    instrument: 'Akordeon',
-    room: 'Sala 123',
+    instrument: 'Gitara klasyczna',
+    room: 'Korytarz ZEA',
     position: 'Na wprost',
-    refFile: 'audio/ref/sala123_wprost_akordeon.wav',
+    refFile: 'audio/ref/korytarzZEA_wprost_gitara_klasyczna.wav',
     samples: [
-      { id: 'A', type: 'anchor',     file: 'audio/anchor/Akordeon_123_nawprost_Aura_anchor.wav' },
-      { id: 'B', type: 'hidden_ref', file: 'audio/ref/sala123_wprost_akordeon.wav'             },
-      { id: 'C', type: 'auraliz',    file: 'audio/auraliz/Akordeon_123_nawprost_Aura.wav'        },
+      { id: 'A', type: 'anchor',     file: 'audio/anchor/GitaraKlas_Korytarz_nawprost_Aura_anchor.wav' },
+      { id: 'B', type: 'hidden_ref', file: 'audio/ref/korytarzZEA_wprost_gitara_klasyczna.wav' },
+      { id: 'C', type: 'auraliz',    file: 'audio/auraliz/GitaraKlas_Korytarz_nawprost_Aura.wav' }
     ]
   },
   {
     id: 2,
-    instrument: 'Akordeon',
-    room: 'Korytarz ZEA',
-    position: 'Na wprost',
-    refFile: 'audio/ref/korytarzZEA_wprost_akordeon.wav',
+    instrument: 'Gitara klasyczna',
+    room: 'Sala 123',
+    position: 'Prawe ucho',
+    refFile: 'audio/ref/sala123_praweucho_gitara_klasyczna.wav',
     samples: [
-      { id: 'A', type: 'auraliz',    file: 'audio/auraliz/Akordeon_Korytarz_nawprost_Aura.wav'        },
-      { id: 'B', type: 'anchor',     file: 'audio/anchor/Akordeon_Korytarz_nawprost_Aura_anchor.wav'  },
-      { id: 'C', type: 'hidden_ref', file: 'audio/ref/korytarzZEA_wprost_akordeon.wav'                },
+      { id: 'A', type: 'auraliz',    file: 'audio/auraliz/GitaraKlas_123_praweucho_Aura.wav' },
+      { id: 'B', type: 'anchor',     file: 'audio/anchor/GitaraKlas_123_praweucho_Aura_anchor.wav' },
+      { id: 'C', type: 'hidden_ref', file: 'audio/ref/sala123_praweucho_gitara_klasyczna.wav' }
     ]
   },
   {
     id: 3,
-    instrument: 'Akordeon',
-    room: 'Studio',
+    instrument: 'Kontrabas palcami',
+    room: 'Korytarz ZEA',
     position: 'Na wprost',
-    refFile: 'audio/ref/Studio_wprost_akordeon.wav',
+    refFile: 'audio/ref/korytarzZEA_wprost_kontrabaspalce.wav',
     samples: [
-      { id: 'A', type: 'hidden_ref', file: 'audio/ref/Studio_wprost_akordeon.wav'             },
-      { id: 'B', type: 'auraliz',    file: 'audio/auraliz/Akordeon_Studio_wprost_Aura.wav'    },
-      { id: 'C', type: 'anchor',     file: 'audio/anchor/Akordeon_Studio_wprost_Aura_anchor.wav' },
+      { id: 'A', type: 'hidden_ref', file: 'audio/ref/korytarzZEA_wprost_kontrabaspalce.wav' },
+      { id: 'B', type: 'auraliz',    file: 'audio/auraliz/KontrabasPalce_Korytarz_nawprost_Aura.wav' },
+      { id: 'C', type: 'anchor',     file: 'audio/anchor/KontrabasPalce_Korytarz_nawprost_Aura_anchor.wav' }
     ]
   },
-
-  // ── WIOLONCZELA ───────────────────────────────────────────
   {
     id: 4,
-    instrument: 'Wiolonczela',
-    room: 'Sala 123',
+    instrument: 'Kontrabas palcami',
+    room: 'Studio',
     position: 'Na wprost',
-    refFile: 'audio/ref/sala123_wprost_wiolonczela.wav',
+    refFile: 'audio/ref/studio_wprost_kontrabaspalce.wav',
     samples: [
-      { id: 'A', type: 'anchor',     file: 'audio/anchor/Wiolonczela_123_nawprost_Aura_anchor.wav' },
-      { id: 'B', type: 'auraliz',    file: 'audio/auraliz/Wiolonczela_123_nawprost_Aura.wav'       },
-      { id: 'C', type: 'hidden_ref', file: 'audio/ref/sala123_wprost_wiolonczela.wav'            },
+      { id: 'A', type: 'anchor',     file: 'audio/anchor/KontrabasPalce_studio_nawprost_Aura_anchor.wav' },
+      { id: 'B', type: 'hidden_ref', file: 'audio/ref/studio_wprost_kontrabaspalce.wav' },
+      { id: 'C', type: 'auraliz',    file: 'audio/auraliz/KontrabasPalce_studio_nawprost_Aura.wav' }
     ]
   },
   {
     id: 5,
-    instrument: 'Wiolonczela',
-    room: 'Korytarz ZEA',
-    position: 'Na wprost',
-    refFile: 'audio/ref/korytarzZEA_wprost_wiolonczela.wav',
+    instrument: 'Kontrabas smyczkiem',
+    room: 'Studio',
+    position: 'Lewe ucho',
+    refFile: 'audio/ref/studio_leweucho_kontrabas_smyczek.wav',
     samples: [
-      { id: 'A', type: 'hidden_ref', file: 'audio/ref/korytarzZEA_wprost_wiolonczela.wav'               },
-      { id: 'B', type: 'anchor',     file: 'audio/anchor/Wiolonczela_korytarz_nawprost_Aura_anchor.wav' },
-      { id: 'C', type: 'auraliz',    file: 'audio/auraliz/Wiolonczela_korytarz_nawprost_Aura.wav'       },
+      { id: 'A', type: 'auraliz',    file: 'audio/auraliz/KontrabasSmyczek_studio_leweucho_Aura.wav' },
+      { id: 'B', type: 'hidden_ref', file: 'audio/ref/studio_leweucho_kontrabas_smyczek.wav' },
+      { id: 'C', type: 'anchor',     file: 'audio/anchor/KontrabasSmyczek_studio_leweucho_Aura_anchor.wav' }
     ]
   },
   {
     id: 6,
     instrument: 'Wiolonczela',
-    room: 'Studio',
+    room: 'Korytarz ZEA',
     position: 'Na wprost',
-    refFile: 'audio/ref/studio_wprost_wiolonczela.wav',
+    refFile: 'audio/ref/korytarzZEA_wprost_wiolonczela.wav',
     samples: [
-      { id: 'A', type: 'auraliz',    file: 'audio/auraliz/Wiolonczela_studio_nawprost_Aura.wav'       },
-      { id: 'B', type: 'hidden_ref', file: 'audio/ref/studio_wprost_wiolonczela.wav'                },
-      { id: 'C', type: 'anchor',     file: 'audio/anchor/Wiolonczela_studio_nawprost_Aura_anchor.wav' },
+      { id: 'A', type: 'hidden_ref', file: 'audio/ref/korytarzZEA_wprost_wiolonczela.wav' },
+      { id: 'B', type: 'anchor',     file: 'audio/anchor/Wiolonczela_korytarz_nawprost_Aura_anchor.wav' },
+      { id: 'C', type: 'auraliz',    file: 'audio/auraliz/Wiolonczela_korytarz_nawprost_Aura.wav' }
     ]
   },
-
-  // ── SAKSOFON ──────────────────────────────────────────────
   {
     id: 7,
-    instrument: 'Saksofon',
+    instrument: 'Wiolonczela',
     room: 'Sala 123',
-    position: 'Na wprost',
-    refFile: 'audio/ref/sala123_wprost_saksofon.wav',
+    position: 'Oddalone',
+    refFile: 'audio/ref/sala123_3lawka_wiolonczela.wav',
     samples: [
-      { id: 'A', type: 'anchor',     file: 'audio/anchor/Saksofon_123_nawprost_Aura_anchor.wav' },
-      { id: 'B', type: 'hidden_ref', file: 'audio/ref/sala123_wprost_saksofon.wav'             },
-      { id: 'C', type: 'auraliz',    file: 'audio/auraliz/Saksofon_123_nawprost_Aura.wav'        },
+      { id: 'A', type: 'anchor',     file: 'audio/anchor/Wiolonczela_123_oddalone_Aura_anchor.wav' },
+      { id: 'B', type: 'auraliz',    file: 'audio/auraliz/Wiolonczela_123_oddalone_Aura.wav' },
+      { id: 'C', type: 'hidden_ref', file: 'audio/ref/sala123_3lawka_wiolonczela.wav' }
     ]
   },
   {
     id: 8,
-    instrument: 'Saksofon',
-    room: 'Korytarz ZEA',
-    position: 'Na wprost',
-    refFile: 'audio/ref/korytarzZEA_wprost_saksofon.wav',
+    instrument: 'Flet',
+    room: 'Studio',
+    position: 'Lewe ucho',
+    refFile: 'audio/ref/studio_leweucho_flet.wav',
     samples: [
-      { id: 'A', type: 'auraliz',    file: 'audio/auraliz/Sasksofon_korytarz_nawprost_Aura.wav'        },
-      { id: 'B', type: 'anchor',     file: 'audio/anchor/Sasksofon_korytarz_nawprost_Aura_anchor.wav'  },
-      { id: 'C', type: 'hidden_ref', file: 'audio/ref/korytarzZEA_wprost_saksofon.wav'                },
+      { id: 'A', type: 'auraliz',    file: 'audio/auraliz/flet_studio_Leweucho_Aura.wav' },
+      { id: 'B', type: 'anchor',     file: 'audio/anchor/flet_studio_Leweucho_Aura_anchor.wav' },
+      { id: 'C', type: 'hidden_ref', file: 'audio/ref/studio_leweucho_flet.wav' }
     ]
   },
   {
     id: 9,
     instrument: 'Saksofon',
     room: 'Studio',
-    position: 'Na wprost',
-    refFile: 'audio/ref/Studio_wprost_saksofon.wav',
+    position: 'Lewe ucho',
+    refFile: 'audio/ref/studio_leweucho_saksofon.wav',
     samples: [
-      { id: 'A', type: 'hidden_ref', file: 'audio/ref/Studio_wprost_saksofon.wav'             },
-      { id: 'B', type: 'auraliz',    file: 'audio/auraliz/Saksofon_studio_nawprost_Aura.wav'    },
-      { id: 'C', type: 'anchor',     file: 'audio/anchor/Saksofon_studio_nawprost_Aura_anchor.wav' },
+      { id: 'A', type: 'hidden_ref', file: 'audio/ref/studio_leweucho_saksofon.wav' },
+      { id: 'B', type: 'auraliz',    file: 'audio/auraliz/Saksofon_studio_leweucho_Aura.wav' },
+      { id: 'C', type: 'anchor',     file: 'audio/anchor/Saksofon_studio_leweucho_Aura_anchor.wav' }
     ]
   },
+  {
+    id: 10,
+    instrument: 'Akordeon',
+    room: 'Korytarz ZEA',
+    position: 'Oddalone',
+    refFile: 'audio/ref/korytarzZEA_daleko_akordeon.wav',
+    samples: [
+      { id: 'A', type: 'auraliz',    file: 'audio/auraliz/Akordeon_Korytarz_oddalone_Aura.wav' },
+      { id: 'B', type: 'anchor',     file: 'audio/anchor/Akordeon_Korytarz_oddalone_Aura_anchor.wav' },
+      { id: 'C', type: 'hidden_ref', file: 'audio/ref/korytarzZEA_daleko_akordeon.wav' }
+    ]
+  }
 ];
 
-// ============================================================
-// STAN APLIKACJI
-// ============================================================
-
 let currentTask = 0;
-let scores = {};         // scores[taskId][sampleId] = 0..100
-let moved = {};          // moved[taskId][sampleId] = true/false (czy ruszono suwakiem)
-let audioObjects = {};   // cache Audio()
+let scores = {};
+let moved = {};
+let audioObjects = {};
 let playingId = null;
 let playTimers = {};
-
-// ============================================================
-// INIT
-// ============================================================
 
 function initScores() {
   TASKS.forEach(t => {
     scores[t.id] = {};
     moved[t.id] = {};
     t.samples.forEach(s => {
-      scores[t.id][s.id] = 50;   // domyślnie w środku
+      scores[t.id][s.id] = 50;
       moved[t.id][s.id] = false;
     });
   });
@@ -985,10 +939,6 @@ function startTest() {
   renderTask();
 }
 
-// ============================================================
-// AUDIO
-// ============================================================
-
 function stopAll() {
   Object.values(audioObjects).forEach(a => {
     a.pause();
@@ -1000,7 +950,6 @@ function stopAll() {
 }
 
 function toggleAudio(key) {
-  const audio = audioObjects[key] || audioObjects['ref_' + (currentTask + 1)];
   const btnId = key === 'ref' ? 'play-ref' : 'play-' + key;
   const fillId = 'fill-' + key;
 
@@ -1017,7 +966,6 @@ function toggleAudio(key) {
 
   const fill = document.getElementById(fillId);
 
-  // Rzeczywiste audio
   const actualKey = key === 'ref'
     ? 'ref_' + TASKS[currentTask].id
     : TASKS[currentTask].id + '_' + key;
@@ -1045,10 +993,6 @@ function toggleAudio(key) {
     };
   }
 }
-
-// ============================================================
-// RENDER
-// ============================================================
 
 function showPhase(p) {
   document.querySelectorAll('.phase').forEach(el => el.classList.remove('active'));
@@ -1084,10 +1028,8 @@ function renderTask() {
 
   document.getElementById('task-number-badge').textContent = `Zadanie ${t.id}`;
   document.getElementById('task-title').textContent = `${t.instrument} — ${t.room}`;
-  document.getElementById('task-subtitle').textContent =
-    `Pozycja mikrofonu: ${t.position} | Plik: ${t.refFile.split('/').pop()}`;
-  document.getElementById('ref-label').textContent =
-    `Nagranie referencyjne — ${t.instrument}, ${t.room}`;
+  document.getElementById('task-subtitle').textContent = `Pozycja mikrofonu: ${t.position}`;
+  document.getElementById('ref-label').textContent = `Nagranie referencyjne — ${t.instrument}, ${t.room}`;
 
   generateWaveBars('bars-ref', 48);
   document.getElementById('fill-ref').style.width = '0%';
@@ -1095,7 +1037,6 @@ function renderTask() {
 
   renderProgress();
 
-  // Samples
   const container = document.getElementById('samples-container');
   container.innerHTML = t.samples.map(s => {
     const val = scores[t.id][s.id];
@@ -1111,7 +1052,6 @@ function renderTask() {
         </button>
         <div style="flex:1">
           <div style="font-size:14px;font-weight:500;color:var(--text)">Próbka ${s.id}</div>
-          <div style="font-size:11px;color:var(--text3);font-family:'DM Mono',monospace">${s.file.split('/').pop()}</div>
         </div>
         <div class="score-display">
           <div class="score-number" id="score-num-${s.id}">${val}</div>
@@ -1139,12 +1079,10 @@ function renderTask() {
     </div>`;
   }).join('');
 
-  // Generate waveform decorations
   t.samples.forEach(s => {
     generateWaveBars('bars-' + s.id, 48);
   });
 
-  // Buttons
   document.getElementById('btn-prev').style.display = currentTask > 0 ? 'inline-block' : 'none';
   document.getElementById('btn-next').textContent =
     currentTask === TASKS.length - 1 ? 'Zakończ i pokaż wyniki →' : 'Następne zadanie →';
@@ -1172,12 +1110,7 @@ function updateScore(taskId, sampleId, val) {
   row.classList.toggle('low-score', val <= 25);
 }
 
-// ============================================================
-// NAVIGATION
-// ============================================================
-
 function nextTask() {
-  // Walidacja: sprawdź czy suwaki były ruszone
   const t = TASKS[currentTask];
   const allMoved = t.samples.every(s => moved[t.id][s.id]);
   if (!allMoved) {
@@ -1216,10 +1149,6 @@ function resetTest() {
   showPhase('intro');
 }
 
-// ============================================================
-// RESULTS
-// ============================================================
-
 function showResults() {
   const auralizScores = [];
   const hiddenRefScores = [];
@@ -1236,7 +1165,6 @@ function showResults() {
 
   const avg = arr => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : 0;
 
-  // Stats
   document.getElementById('stats-grid').innerHTML = `
     <div class="stat-card">
       <div class="stat-label">Śr. auralizacja</div>
@@ -1254,7 +1182,6 @@ function showResults() {
       <div class="stat-sub">/ 100 pkt</div>
     </div>`;
 
-  // Table
   let html = `<thead><tr>
     <th>Zadanie</th><th>Instrument</th><th>Pomieszczenie</th>
     <th>Próbka</th><th>Typ</th><th>Ocena</th>
@@ -1281,7 +1208,6 @@ function showResults() {
   html += '</tbody>';
   document.getElementById('results-table').innerHTML = html;
 
-  // Validation
   const hiddenRefOk = avg(hiddenRefScores) >= 80;
   const anchorOk = avg(anchorScores) <= 30;
   let vHTML = '';
@@ -1290,10 +1216,6 @@ function showResults() {
   vHTML += `<div style="margin-top:8px;color:var(--text2)">Uczestnik: <strong>${document.getElementById('participant-name').value}</strong> | Doświadczenie: ${document.getElementById('exp-level').value || '—'} | Sprzęt: ${document.getElementById('headphone-type').value}</div>`;
   document.getElementById('validation-results').innerHTML = vHTML;
 }
-
-// ============================================================
-// CSV EXPORT
-// ============================================================
 
 function exportCSV() {
   const name = document.getElementById('participant-name').value || 'uczestnik';
