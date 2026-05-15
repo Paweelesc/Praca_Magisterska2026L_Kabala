@@ -30,3 +30,7 @@ W terminalu uruchom:
 
 ```bash
 pip install sounddevice soundfile
+
+## Uruchomienie
+
+Przejdź do folderu projektu i uruchom:
