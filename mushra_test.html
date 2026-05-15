@@ -4,33 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Test MUSHRA — Auralizacja</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #f5f4f0;
+    --bg: #faf8f5;
+    --bg2: #f3efe9;
     --surface: #ffffff;
-    --surface2: #f0ede8;
-    --border: #e2ddd6;
-    --border2: #cec9c0;
-    --text: #1a1916;
-    --text2: #6b6760;
-    --text3: #9c9891;
-    --accent: #2d5a3d;
-    --accent-bg: #eaf2ed;
-    --accent-border: #a8ccb4;
-    --danger: #8b2020;
-    --danger-bg: #f5eaea;
-    --info: #1a3a5c;
-    --info-bg: #eaf0f7;
-    --info-border: #a8c0d4;
+    --border: #e7e1d7;
+    --border2: #d4ccbf;
+    --text: #1f1d1a;
+    --text2: #6d685f;
+    --text3: #9c9689;
+    --accent: #b4502e;
+    --accent-dark: #8e3e22;
+    --accent-bg: #f7e8df;
+    --accent-border: #e0b89f;
+    --navy: #1e3a52;
+    --navy-bg: #e6ecf2;
+    --navy-border: #a8bccb;
+    --success: #2d6a4f;
+    --success-bg: #e0efe6;
+    --success-border: #a4cbb1;
+    --warn: #7a5a1e;
     --warn-bg: #fdf6e3;
     --warn-border: #d4b896;
+    --danger: #9c2c2c;
+    --danger-bg: #f5e2e2;
+    --danger-border: #d4a0a0;
   }
 
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
@@ -38,7 +44,7 @@
   }
 
   .page-wrap {
-    max-width: 780px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 2rem 1.5rem 4rem;
   }
@@ -47,34 +53,22 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
     border-bottom: 1px solid var(--border);
   }
 
-  .site-header h1 {
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--text);
-  }
-
-  .site-header p {
-    font-size: 13px;
-    color: var(--text2);
-    margin-top: 3px;
-    max-width: 420px;
-  }
+  .site-header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+  .site-header p { font-size: 13px; color: var(--text2); margin-top: 4px; max-width: 500px; }
 
   .badge {
-    font-family: 'DM Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     padding: 4px 10px;
     border-radius: 4px;
     background: var(--accent-bg);
-    color: var(--accent);
+    color: var(--accent-dark);
     border: 1px solid var(--accent-border);
-    white-space: nowrap;
   }
 
   .phase { display: none; }
@@ -101,37 +95,27 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 8px;
-    margin: 1rem 0 1.5rem;
+    margin: 1rem 0 1.25rem;
   }
 
   .scale-item {
-    background: var(--surface2);
+    background: var(--bg2);
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 10px 8px;
     text-align: center;
   }
 
-  .scale-item .range {
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-  }
-
-  .scale-item .label {
-    font-size: 11px;
-    color: var(--text2);
-    margin-top: 2px;
-  }
+  .scale-item .range { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; }
+  .scale-item .label { font-size: 11px; color: var(--text2); margin-top: 2px; }
 
   .info-box {
-    background: var(--info-bg);
-    border: 1px solid var(--info-border);
+    background: var(--navy-bg);
+    border: 1px solid var(--navy-border);
     border-radius: 8px;
     padding: 12px 16px;
     font-size: 13px;
-    color: var(--info);
+    color: var(--navy);
     line-height: 1.7;
     margin-bottom: 1rem;
   }
@@ -142,16 +126,15 @@
     border-radius: 8px;
     padding: 12px 16px;
     font-size: 13px;
-    color: #7a5a1e;
+    color: var(--warn);
     line-height: 1.7;
-    margin-bottom: 1rem;
   }
 
   .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .form-group label {
@@ -171,24 +154,19 @@
     border-radius: 8px;
     background: var(--surface);
     color: var(--text);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     outline: none;
-    transition: border-color 0.15s;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
 
   .form-group input:focus,
   .form-group select:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.1);
+    box-shadow: 0 0 0 3px rgba(180, 80, 46, 0.12);
   }
 
-  .btn-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+  .btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
   .btn {
     height: 40px;
@@ -197,72 +175,74 @@
     border: 1px solid var(--border2);
     background: var(--surface);
     color: var(--text);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: background 0.15s, border-color 0.15s;
   }
 
-  .btn:hover { background: var(--surface2); }
+  .btn:hover { background: var(--bg2); }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
 
-  .btn-primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #ffffff;
-  }
-
-  .btn-primary:hover { background: #254d34; }
-
-  .btn-danger {
-    background: var(--danger-bg);
-    border-color: #d4a0a0;
-    color: var(--danger);
-  }
-
-  .progress-bar-wrap {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 1.5rem;
-  }
-
-  .progress-steps {
-    display: flex;
-    gap: 6px;
-  }
-
+  .progress-bar-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
+  .progress-steps { display: flex; gap: 6px; }
   .step-dot {
-    width: 10px;
-    height: 10px;
+    width: 9px; height: 9px;
     border-radius: 50%;
     background: var(--border2);
     transition: background 0.2s;
   }
-
   .step-dot.done { background: var(--accent); }
-  .step-dot.active { background: var(--info); }
+  .step-dot.active { background: var(--navy); }
+  .progress-label { font-size: 12px; color: var(--text2); font-family: 'JetBrains Mono', monospace; }
 
-  .progress-label {
-    font-size: 13px;
-    color: var(--text2);
-    font-family: 'DM Mono', monospace;
+  .task-header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 
-  .ref-player {
+  .task-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    color: var(--text2);
+  }
+
+  .task-meta h2 { font-size: 16px; font-weight: 600; }
+  .task-meta p { font-size: 12px; color: var(--text2); margin-top: 2px; }
+
+  .mushra-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .ref-row {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 1rem 1.25rem;
+    padding: 0.875rem 1rem;
     background: var(--accent-bg);
     border: 1px solid var(--accent-border);
     border-radius: 10px;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
   .play-btn {
-    width: 44px;
-    height: 44px;
+    width: 40px; height: 40px;
     border-radius: 50%;
     border: 1px solid var(--border2);
     background: var(--surface);
@@ -274,101 +254,91 @@
     transition: background 0.15s, transform 0.1s;
   }
 
-  .play-btn:hover { background: var(--surface2); transform: scale(1.05); }
-  .play-btn:active { transform: scale(0.97); }
+  .play-btn:hover { background: var(--bg2); transform: scale(1.05); }
+  .play-btn.playing { background: var(--accent); border-color: var(--accent); }
 
-  .play-btn.playing {
-    background: var(--accent);
-    border-color: var(--accent);
-  }
-
-  .play-btn svg {
-    width: 16px;
-    height: 16px;
+  .play-icon {
+    width: 14px; height: 14px;
     fill: var(--text);
     margin-left: 2px;
-  }
-
-  .play-btn.playing svg { fill: #ffffff; margin-left: 2px; }
-
-  .stop-icon {
-    width: 12px;
-    height: 12px;
-    background: #ffffff;
-    border-radius: 2px;
-    display: none;
-    margin-left: 0 !important;
   }
 
   .play-btn.playing .play-icon { display: none; }
   .play-btn.playing .stop-icon { display: block !important; }
 
-  .player-info h3 {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--accent);
+  .stop-icon {
+    width: 11px; height: 11px;
+    background: #fff;
+    border-radius: 1.5px;
+    display: none;
   }
 
-  .player-info p {
-    font-size: 12px;
-    color: var(--text2);
-    margin-top: 2px;
-  }
+  .ref-label { flex: 1; }
+  .ref-label .l1 { font-size: 14px; font-weight: 600; color: var(--accent-dark); }
+  .ref-label .l2 { font-size: 11px; color: var(--text2); margin-top: 2px; }
 
-  .ref-tag {
-    margin-left: auto;
-    font-family: 'DM Mono', monospace;
+  .ref-pill {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    padding: 3px 8px;
+    padding: 4px 10px;
     background: var(--accent);
     color: #fff;
     border-radius: 4px;
   }
 
-  .samples-section-title {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+  .samples-area { display: flex; gap: 8px; align-items: stretch; }
+
+  .scale-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 88px 8px 12px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
     color: var(--text3);
-    margin-bottom: 10px;
+    border-right: 1px dashed var(--border);
+    min-width: 38px;
   }
 
-  .sample-row {
-    background: var(--surface);
+  .samples-grid {
+    flex: 1;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 8px;
+  }
+
+  .sample-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    background: var(--bg2);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 1rem 1.25rem;
-    margin-bottom: 8px;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, background 0.2s;
   }
 
-  .sample-row.high-score { border-color: var(--accent-border); }
-  .sample-row.low-score { border-color: #d4a0a0; }
+  .sample-col.high-score { border-color: var(--success-border); background: var(--success-bg); }
+  .sample-col.low-score { border-color: var(--danger-border); background: var(--danger-bg); }
 
-  .sample-top {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
-
-  .sample-id {
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    width: 28px;
-    height: 28px;
+  .sample-letter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    width: 32px;
+    height: 32px;
     border-radius: 6px;
-    background: var(--surface2);
+    background: var(--surface);
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    margin-bottom: 8px;
   }
 
-  .sample-play-btn {
+  .sample-play {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -378,147 +348,99 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
     transition: background 0.15s;
+    margin-bottom: 12px;
   }
 
-  .sample-play-btn:hover { background: var(--surface2); }
-
-  .sample-play-btn.playing {
-    background: var(--info);
-    border-color: var(--info);
-  }
-
-  .sample-play-btn svg {
-    width: 12px;
-    height: 12px;
-    fill: var(--text);
-    margin-left: 2px;
-  }
-
-  .sample-play-btn.playing svg { fill: #fff; }
-  .sample-play-btn.playing .play-icon { display: none; }
-  .sample-play-btn.playing .stop-icon-s { display: block !important; }
-
-  .stop-icon-s {
-    width: 10px;
-    height: 10px;
+  .sample-play:hover { background: var(--bg2); }
+  .sample-play.playing { background: var(--navy); border-color: var(--navy); }
+  .sample-play svg { width: 12px; height: 12px; }
+  .sample-play .play-icon { fill: var(--text); margin-left: 2px; }
+  .sample-play.playing .play-icon { display: none; }
+  .sample-play.playing .stop-icon-s {
+    display: block !important;
     background: #fff;
-    border-radius: 1px;
-    display: none;
-    margin-left: 0 !important;
+    width: 10px; height: 10px;
+    border-radius: 1.5px;
+  }
+  .stop-icon-s { display: none; }
+
+  .vslider-wrap {
+    position: relative;
+    height: 220px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .score-display {
-    margin-left: auto;
-    text-align: right;
-    flex-shrink: 0;
+  input[type="range"].vslider {
+    -webkit-appearance: slider-vertical;
+    appearance: slider-vertical;
+    writing-mode: bt-lr;
+    width: 8px;
+    height: 220px;
+    background: var(--border);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
   }
 
-  .score-number {
-    font-family: 'DM Mono', monospace;
-    font-size: 20px;
+  input[type="range"].vslider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 26px;
+    height: 14px;
+    border-radius: 3px;
+    background: var(--text);
+    border: 2px solid var(--surface);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    cursor: pointer;
+  }
+
+  input[type="range"].vslider::-moz-range-thumb {
+    width: 26px;
+    height: 14px;
+    border-radius: 3px;
+    background: var(--text);
+    border: 2px solid var(--surface);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    cursor: pointer;
+  }
+
+  .score-value {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
     font-weight: 500;
-    color: var(--text);
+    min-width: 36px;
+    text-align: center;
   }
 
   .score-quality {
-    font-size: 11px;
-    color: var(--text3);
-    margin-top: 1px;
-  }
-
-  .slider-container {
-    position: relative;
-  }
-
-  input[type="range"] {
-    width: 100%;
-    -webkit-appearance: none;
-    height: 6px;
-    border-radius: 3px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    outline: none;
-    cursor: pointer;
-  }
-
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--text);
-    border: 2px solid var(--surface);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    cursor: pointer;
-    transition: transform 0.1s;
-  }
-
-  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
-
-  .slider-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-  }
-
-  .slider-labels span {
     font-size: 10px;
     color: var(--text3);
-    font-family: 'DM Mono', monospace;
-  }
-
-  .task-header {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .task-number {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 4px 10px;
-    color: var(--text2);
-  }
-
-  .task-meta h2 {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text);
-  }
-
-  .task-meta p {
-    font-size: 12px;
-    color: var(--text2);
     margin-top: 2px;
+    height: 14px;
   }
 
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     margin-bottom: 1.5rem;
   }
 
   .stat-card {
-    background: var(--surface2);
+    background: var(--bg2);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 1rem;
+    padding: 1rem 0.5rem;
     text-align: center;
   }
 
   .stat-card .stat-label {
-    font-size: 11px;
+    font-size: 10px;
     color: var(--text2);
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -526,23 +448,14 @@
   }
 
   .stat-card .stat-val {
-    font-family: 'DM Mono', monospace;
-    font-size: 26px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
     font-weight: 500;
-    color: var(--text);
   }
 
-  .stat-card .stat-sub {
-    font-size: 11px;
-    color: var(--text3);
-    margin-top: 2px;
-  }
+  .stat-card .stat-sub { font-size: 10px; color: var(--text3); margin-top: 2px; }
 
-  .results-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
+  .results-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 
   .results-table th {
     text-align: left;
@@ -558,73 +471,37 @@
   .results-table td {
     padding: 10px 12px;
     border-bottom: 1px solid var(--border);
-    color: var(--text);
     vertical-align: middle;
   }
 
-  .results-table tr:last-child td { border-bottom: none; }
+  .type-pill {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+  }
+
+  .type-aur48 { background: var(--success-bg); color: var(--success); border: 1px solid var(--success-border); }
+  .type-aur24 { background: var(--navy-bg); color: var(--navy); border: 1px solid var(--navy-border); }
+  .type-aur12 { background: var(--accent-bg); color: var(--accent-dark); border: 1px solid var(--accent-border); }
+  .type-hidden_ref { background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn-border); }
+  .type-anchor { background: var(--danger-bg); color: var(--danger); border: 1px solid var(--danger-border); }
 
   .score-bar {
     display: inline-block;
     height: 5px;
     border-radius: 3px;
-    background: var(--info);
+    background: var(--navy);
     vertical-align: middle;
     margin-left: 8px;
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
-  .type-pill {
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-family: 'DM Mono', monospace;
-  }
-
-  .type-auraliz { background: var(--info-bg); color: var(--info); border: 1px solid var(--info-border); }
-  .type-hidden_ref { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent-border); }
-  .type-anchor { background: var(--danger-bg); color: var(--danger); border: 1px solid #d4a0a0; }
-
-  .waveform {
-    height: 32px;
-    background: var(--surface2);
-    border-radius: 4px;
-    margin-top: 8px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .waveform-fill {
-    position: absolute;
-    top: 0; left: 0;
-    height: 100%;
-    background: var(--accent-bg);
-    border-right: 2px solid var(--accent);
-    transition: width 0.1s linear;
-    width: 0%;
-  }
-
-  .waveform-bars {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding: 4px 6px;
-    gap: 2px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .waveform-bar {
-    flex: 1;
-    border-radius: 1px;
-    background: var(--border2);
-  }
-
-  @media (max-width: 600px) {
-    .scale-row { grid-template-columns: repeat(3, 1fr); }
-    .form-row { grid-template-columns: 1fr; }
+  @media (max-width: 768px) {
+    .samples-grid { grid-auto-flow: row; grid-auto-columns: unset; grid-template-columns: repeat(3, 1fr); }
+    .scale-labels { display: none; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .stats-grid .stat-card:last-child { grid-column: span 2; }
   }
 </style>
 </head>
@@ -635,32 +512,32 @@
   <div class="site-header">
     <div>
       <h1>Test MUSHRA</h1>
-      <p>Analiza cech psychoakustycznych sygnałów instrumentów muzycznych w różnych warunkach pogłosowych</p>
+      <p>Ocena wierności auralizacji nagrań instrumentów muzycznych</p>
     </div>
-    <span class="badge">v1.0</span>
+    <span class="badge">v2.0</span>
   </div>
 
   <div id="phase-intro" class="phase active">
     <div class="card">
-      <div class="card-title">Instrukcja testu</div>
+      <div class="card-title">Instrukcja</div>
       <p style="font-size:14px;color:var(--text2);margin-bottom:1rem">
-        Oceniasz, jak blisko rzeczywistego nagrania (referencji) brzmi sygnał uzyskany w procesie auralizacji. Skala ocen wynosi <strong>0–100</strong>:
+        Oceniasz, jak blisko nagrania referencyjnego (<strong>REF</strong>) brzmi każda z 5 anonimowych próbek. Skala 0–100:
       </p>
       <div class="scale-row">
-        <div class="scale-item"><div class="range">0–20</div><div class="label">Zła jakość</div></div>
+        <div class="scale-item"><div class="range">0–20</div><div class="label">Zła</div></div>
         <div class="scale-item"><div class="range">20–40</div><div class="label">Słaba</div></div>
         <div class="scale-item"><div class="range">40–60</div><div class="label">Dostateczna</div></div>
         <div class="scale-item"><div class="range">60–80</div><div class="label">Dobra</div></div>
         <div class="scale-item"><div class="range">80–100</div><div class="label">Doskonała</div></div>
       </div>
       <div class="info-box">
-        W każdym zadaniu słyszysz <strong>referencję</strong> (jawne nagranie referencyjne) oraz 3 anonimowe próbki:<br>
-        • <strong>Auralizowana</strong> — nagranie uzyskane przez splot z odpowiedzią impulsową<br>
-        • <strong>Ukryta referencja</strong> — identyczna z referencją, powinna dostać ~100 pkt<br>
-        • <strong>Kotwica</strong> — sygnał celowo obniżonej jakości (filtr LP 2,2 kHz), powinna dostać niską ocenę
+        W każdym zadaniu masz <strong>jawną referencję</strong> i <strong>5 anonimowych próbek</strong>:<br>
+        • 3 wersje auralizacji (różne pasma odpowiedzi impulsowej)<br>
+        • Ukryta referencja (identyczna z REF — oczekiwana ocena ~100)<br>
+        • Kotwica (sygnał monofoniczny — oczekiwana ocena niska)
       </div>
       <div class="warn-box">
-        Próbki są prezentowane w <strong>losowej kolejności</strong> i anonimowo (Próbka A/B/C). Możesz dowolnie przełączać się między próbkami. Oceniaj zgodność z referencją, nie ogólną jakość dźwięku.
+        Próbki są w <strong>losowej kolejności</strong>. Możesz wielokrotnie przełączać się między REF a próbkami. Oceniaj <strong>zgodność z referencją</strong>, nie ogólną jakość dźwięku.
       </div>
     </div>
 
@@ -676,10 +553,10 @@
           <select id="exp-level">
             <option value="">Wybierz...</option>
             <option value="brak">Brak doświadczenia</option>
-            <option value="amator">Amator (słucham muzyki)</option>
-            <option value="sredniozaawansowany">Grę/śpiewam hobbystycznie</option>
+            <option value="amator">Amator</option>
+            <option value="sredniozaawansowany">Gram/śpiewam hobbystycznie</option>
             <option value="zaawansowany">Wykształcenie muzyczne</option>
-            <option value="profesjonalny">Profesjonalny muzyk/inżynier</option>
+            <option value="profesjonalny">Profesjonalista (muzyk/realizator)</option>
           </select>
         </div>
       </div>
@@ -702,7 +579,7 @@
 
     <div class="btn-row">
       <button class="btn btn-primary" onclick="startTest()">Rozpocznij test →</button>
-      <span style="font-size:13px;color:var(--text3)">10 zadań, ok. 20–25 min</span>
+      <span style="font-size:13px;color:var(--text3)">10 zadań, ~30–40 min</span>
     </div>
   </div>
 
@@ -716,30 +593,37 @@
       <span class="task-number" id="task-number-badge">Zadanie 1</span>
       <div class="task-meta">
         <h2 id="task-title">Instrument — Pomieszczenie</h2>
-        <p id="task-subtitle">Pozycja mikrofonu: na wprost</p>
+        <p id="task-subtitle">Pozycja mikrofonu</p>
       </div>
     </div>
 
-    <div class="ref-player">
-      <button class="play-btn" id="play-ref" onclick="toggleAudio('ref')">
-        <svg class="play-icon" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-        <div class="stop-icon"></div>
-      </button>
-      <div class="player-info">
-        <h3 id="ref-label">Nagranie referencyjne</h3>
-        <p id="ref-desc">Kliknij ▶ aby odsłuchać. Używaj jako punktu odniesienia podczas oceny.</p>
-        <div class="waveform" id="waveform-ref">
-          <div class="waveform-fill" id="fill-ref"></div>
-          <div class="waveform-bars" id="bars-ref"></div>
+    <div class="mushra-panel">
+      <div class="ref-row">
+        <button class="play-btn" id="play-ref" onclick="toggleAudio('ref')">
+          <svg class="play-icon" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+          <div class="stop-icon"></div>
+        </button>
+        <div class="ref-label">
+          <div class="l1" id="ref-l1">Nagranie referencyjne</div>
+          <div class="l2">Punkt odniesienia — kliknij ▶ aby odsłuchać</div>
         </div>
+        <span class="ref-pill">REF</span>
       </div>
-      <span class="ref-tag">REF</span>
+
+      <div class="samples-area">
+        <div class="scale-labels">
+          <span>100</span>
+          <span>80</span>
+          <span>60</span>
+          <span>40</span>
+          <span>20</span>
+          <span>0</span>
+        </div>
+        <div class="samples-grid" id="samples-grid"></div>
+      </div>
     </div>
 
-    <div class="samples-section-title">Próbki do oceny</div>
-    <div id="samples-container"></div>
-
-    <div class="btn-row" style="margin-top:1.5rem">
+    <div class="btn-row" style="margin-top:1rem">
       <button class="btn" id="btn-prev" onclick="prevTask()" style="display:none">← Poprzednie</button>
       <button class="btn btn-primary" id="btn-next" onclick="nextTask()">Następne zadanie →</button>
       <span id="validation-msg" style="font-size:13px;color:var(--danger);display:none">Ustaw wszystkie suwaki zanim przejdziesz dalej</span>
@@ -748,17 +632,17 @@
 
   <div id="phase-results" class="phase">
     <div class="card">
-      <div class="card-title">Wyniki testu MUSHRA</div>
+      <div class="card-title">Wyniki testu</div>
       <div class="stats-grid" id="stats-grid"></div>
 
       <div style="margin-bottom:0.75rem">
-        <span class="samples-section-title">Szczegółowe wyniki</span>
+        <div class="card-title">Szczegółowe wyniki (z odsłonięciem typu próbek)</div>
       </div>
       <table class="results-table" id="results-table"></table>
     </div>
 
-    <div class="card" style="background:var(--surface2)">
-      <div class="card-title">Walidacja testu</div>
+    <div class="card" style="background:var(--bg2)">
+      <div class="card-title">Walidacja</div>
       <div id="validation-results" style="font-size:13px;line-height:2"></div>
     </div>
 
@@ -771,157 +655,218 @@
 </div>
 
 <script>
+// ===================================================
+// DEFINICJA ZADAŃ
+// Ścieżki dopasowane do RZECZYWISTYCH nazw plików:
+//   - ref/          Akordeon_Korytarz_daleko_ref.wav, Gitara_klasyczna_Korytarz_wprost_ref.wav ...
+//   - auraliz_48/   Akordeon_Korytarz_oddalone_Aura.wav, GitaraKlas_Korytarz_nawprost_Aura.wav ...
+//   - Auraliz_24/   akordeon_Kor  S1R3A0 daleko 24khz_Aura.wav ...
+//   - Auraliz_12/   akordeon_Kor  S1R3A0 daleko 12khz_Aura.wav ...
+//   - anchor/       akordeon_Kor  S1R3A0 daleko 48khz_MONO_Aura.wav ...
+// UWAGA: w nazwach 12/24/anchor są PODWÓJNE SPACJE między instrumentem a kodem sceny!
+// ===================================================
+
 const TASKS = [
   {
     id: 1,
     instrument: 'Gitara klasyczna',
     room: 'Korytarz ZEA',
     position: 'Na wprost',
-    refFile: 'audio/ref/korytarzZEA_wprost_gitara_klasyczna.wav',
-    samples: [
-      { id: 'A', type: 'anchor',     file: 'audio/anchor/GitaraKlas_Korytarz_nawprost_Aura_anchor.wav' },
-      { id: 'B', type: 'hidden_ref', file: 'audio/ref/korytarzZEA_wprost_gitara_klasyczna.wav' },
-      { id: 'C', type: 'auraliz',    file: 'audio/auraliz/GitaraKlas_Korytarz_nawprost_Aura.wav' }
-    ]
+    refFile: 'audio/ref/Gitara_klasyczna_Korytarz_wprost_ref.wav',
+    stimuli: {
+      aur48:      'audio/auraliz_48/GitaraKlas_Korytarz_nawprost_Aura.wav',
+      aur24:      'audio/Auraliz_24/gitara_klasyczna_Kor  S1R1A0 wprost 24khz_Aura.wav',
+      aur12:      'audio/Auraliz_12/gitara_klasyczna_Kor  S1R1A0 wprost 12khz_Aura.wav',
+      hidden_ref: 'audio/ref/Gitara_klasyczna_Korytarz_wprost_ref.wav',
+      anchor:     'audio/anchor/gitara_klasyczna_Kor  S1R1A0 wprost 48khz_MONO_Aura.wav'
+    }
   },
   {
     id: 2,
     instrument: 'Gitara klasyczna',
     room: 'Sala 123',
     position: 'Prawe ucho',
-    refFile: 'audio/ref/sala123_praweucho_gitara_klasyczna.wav',
-    samples: [
-      { id: 'A', type: 'auraliz',    file: 'audio/auraliz/GitaraKlas_123_praweucho_Aura.wav' },
-      { id: 'B', type: 'anchor',     file: 'audio/anchor/GitaraKlas_123_praweucho_Aura_anchor.wav' },
-      { id: 'C', type: 'hidden_ref', file: 'audio/ref/sala123_praweucho_gitara_klasyczna.wav' }
-    ]
+    refFile: 'audio/ref/Gitara_klasyczna_Sala123_praweucho_ref.wav',
+    stimuli: {
+      aur48:      'audio/auraliz_48/GitaraKlas_123_praweucho_Aura.wav',
+      aur24:      'audio/Auraliz_24/gitara_klasyczna_S123  S1R2A0 praweucho 24khz_Aura.wav',
+      aur12:      'audio/Auraliz_12/gitara_klasyczna_S123  S1R2A0 praweucho 12khz_Aura.wav',
+      hidden_ref: 'audio/ref/Gitara_klasyczna_Sala123_praweucho_ref.wav',
+      anchor:     'audio/anchor/gitara_klasyczna_S123  S1R2A0 praweucho 48khz_MONO_Aura.wav'
+    }
   },
   {
     id: 3,
     instrument: 'Kontrabas palcami',
     room: 'Korytarz ZEA',
     position: 'Na wprost',
-    refFile: 'audio/ref/korytarzZEA_wprost_kontrabaspalce.wav',
-    samples: [
-      { id: 'A', type: 'hidden_ref', file: 'audio/ref/korytarzZEA_wprost_kontrabaspalce.wav' },
-      { id: 'B', type: 'auraliz',    file: 'audio/auraliz/KontrabasPalce_Korytarz_nawprost_Aura.wav' },
-      { id: 'C', type: 'anchor',     file: 'audio/anchor/KontrabasPalce_Korytarz_nawprost_Aura_anchor.wav' }
-    ]
+    refFile: 'audio/ref/Kontrabas_palce_Korytarz_wprost_ref.wav',
+    stimuli: {
+      aur48:      'audio/auraliz_48/KontrabasPalce_Korytarz_nawprost_Aura.wav',
+      aur24:      'audio/Auraliz_24/kontrabas_palce_Kor  S1R1A0 wprost 24khz_Aura.wav',
+      aur12:      'audio/Auraliz_12/kontrabas_palce_Kor  S1R1A0 wprost 12khz_Aura.wav',
+      hidden_ref: 'audio/ref/Kontrabas_palce_Korytarz_wprost_ref.wav',
+      anchor:     'audio/anchor/kontrabas_palce_Kor  S1R1A0 wprost 48khz_MONO_Aura.wav'
+    }
   },
   {
     id: 4,
     instrument: 'Kontrabas palcami',
     room: 'Studio',
     position: 'Na wprost',
-    refFile: 'audio/ref/studio_wprost_kontrabaspalce.wav',
-    samples: [
-      { id: 'A', type: 'anchor',     file: 'audio/anchor/KontrabasPalce_studio_nawprost_Aura_anchor.wav' },
-      { id: 'B', type: 'hidden_ref', file: 'audio/ref/studio_wprost_kontrabaspalce.wav' },
-      { id: 'C', type: 'auraliz',    file: 'audio/auraliz/KontrabasPalce_studio_nawprost_Aura.wav' }
-    ]
+    refFile: 'audio/ref/Kontrabas_palce_Studio_wprost_ref.wav',
+    stimuli: {
+      aur48:      'audio/auraliz_48/KontrabasPalce_studio_nawprost_Aura.wav',
+      aur24:      'audio/Auraliz_24/kontrabas_palce_Studio  S1R1A0 wprost 24khz_Aura.wav',
+      aur12:      'audio/Auraliz_12/kontrabas_palce_Studio  S1R1A0 wprost 12khz_Aura.wav',
+      hidden_ref: 'audio/ref/Kontrabas_palce_Studio_wprost_ref.wav',
+      anchor:     'audio/anchor/kontrabas_palce_Studio  S1R1A0 wprost 48khz_MONO_Aura.wav'
+    }
   },
   {
     id: 5,
     instrument: 'Kontrabas smyczkiem',
     room: 'Studio',
     position: 'Lewe ucho',
-    refFile: 'audio/ref/studio_leweucho_kontrabas_smyczek.wav',
-    samples: [
-      { id: 'A', type: 'auraliz',    file: 'audio/auraliz/KontrabasSmyczek_studio_leweucho_Aura.wav' },
-      { id: 'B', type: 'hidden_ref', file: 'audio/ref/studio_leweucho_kontrabas_smyczek.wav' },
-      { id: 'C', type: 'anchor',     file: 'audio/anchor/KontrabasSmyczek_studio_leweucho_Aura_anchor.wav' }
-    ]
+    refFile: 'audio/ref/Kontrabas_smyczek_Studio_leweucho_ref.wav',
+    stimuli: {
+      aur48:      'audio/auraliz_48/KontrabasSmyczek_studio_leweucho_Aura.wav',
+      aur24:      'audio/Auraliz_24/kontrabas_smyczek_Studio  S1R3A0 leweucho 24khz_Aura.wav',
+      aur12:      'audio/Auraliz_12/kontrabas_smyczek_Studio  S1R3A0 leweucho 12khz_Aura.wav',
+      hidden_ref: 'audio/ref/Kontrabas_smyczek_Studio_leweucho_ref.wav',
+      anchor:     'audio/anchor/kontrabas_smyczek_Studio  S1R3A0 leweucho 48khz_MONO_Aura.wav'
+    }
   },
   {
     id: 6,
     instrument: 'Wiolonczela',
     room: 'Korytarz ZEA',
     position: 'Na wprost',
-    refFile: 'audio/ref/korytarzZEA_wprost_wiolonczela.wav',
-    samples: [
-      { id: 'A', type: 'hidden_ref', file: 'audio/ref/korytarzZEA_wprost_wiolonczela.wav' },
-      { id: 'B', type: 'anchor',     file: 'audio/anchor/Wiolonczela_korytarz_nawprost_Aura_anchor.wav' },
-      { id: 'C', type: 'auraliz',    file: 'audio/auraliz/Wiolonczela_korytarz_nawprost_Aura.wav' }
-    ]
+    refFile: 'audio/ref/Wiolonczela_Korytarz_wprost_ref.wav',
+    stimuli: {
+      aur48:      'audio/auraliz_48/Wiolonczela_korytarz_nawprost_Aura.wav',
+      aur24:      'audio/Auraliz_24/wiolonczela_Kor  S1R1A0 wprost 24khz_Aura.wav',
+      aur12:      'audio/Auraliz_12/wiolonczela_Kor  S1R1A0 wprost 12khz_Aura.wav',
+      hidden_ref: 'audio/ref/Wiolonczela_Korytarz_wprost_ref.wav',
+      anchor:     'audio/anchor/wiolonczela_Kor  S1R1A0 wprost 48khz_MONO_Aura.wav'
+    }
   },
   {
     id: 7,
     instrument: 'Wiolonczela',
     room: 'Sala 123',
     position: 'Oddalone',
-    refFile: 'audio/ref/sala123_3lawka_wiolonczela.wav',
-    samples: [
-      { id: 'A', type: 'anchor',     file: 'audio/anchor/Wiolonczela_123_oddalone_Aura_anchor.wav' },
-      { id: 'B', type: 'auraliz',    file: 'audio/auraliz/Wiolonczela_123_oddalone_Aura.wav' },
-      { id: 'C', type: 'hidden_ref', file: 'audio/ref/sala123_3lawka_wiolonczela.wav' }
-    ]
+    refFile: 'audio/ref/Wiolonczela_Sala123_daleko_ref.wav',
+    stimuli: {
+      aur48:      'audio/auraliz_48/Wiolonczela_123_oddalone_Aura.wav',
+      aur24:      'audio/Auraliz_24/wiolonczela_S123  S1R5A0 daleko 24khz_Aura.wav',
+      aur12:      'audio/Auraliz_12/wiolonczela_S123  S1R5A0 daleko 12khz_Aura.wav',
+      hidden_ref: 'audio/ref/Wiolonczela_Sala123_daleko_ref.wav',
+      anchor:     'audio/anchor/wiolonczela_S123  S1R5A0 daleko 48khz_MONO_Aura.wav'
+    }
   },
   {
     id: 8,
     instrument: 'Flet',
     room: 'Studio',
     position: 'Lewe ucho',
-    refFile: 'audio/ref/studio_leweucho_flet.wav',
-    samples: [
-      { id: 'A', type: 'auraliz',    file: 'audio/auraliz/flet_studio_Leweucho_Aura.wav' },
-      { id: 'B', type: 'anchor',     file: 'audio/anchor/flet_studio_Leweucho_Aura_anchor.wav' },
-      { id: 'C', type: 'hidden_ref', file: 'audio/ref/studio_leweucho_flet.wav' }
-    ]
+    refFile: 'audio/ref/Flet_Studio_leweucho_ref.wav',
+    stimuli: {
+      aur48:      'audio/auraliz_48/flet_studio_Leweucho_Aura.wav',
+      aur24:      'audio/Auraliz_24/flet_Studio  S1R3A0 leweucho 24khz_Aura.wav',
+      aur12:      'audio/Auraliz_12/flet_Studio  S1R3A0 leweucho 12khz_Aura.wav',
+      hidden_ref: 'audio/ref/Flet_Studio_leweucho_ref.wav',
+      anchor:     'audio/anchor/flet_Studio  S1R3A0 leweucho 48khz_MONO_Aura.wav'
+    }
   },
   {
     id: 9,
     instrument: 'Saksofon',
     room: 'Studio',
     position: 'Lewe ucho',
-    refFile: 'audio/ref/studio_leweucho_saksofon.wav',
-    samples: [
-      { id: 'A', type: 'hidden_ref', file: 'audio/ref/studio_leweucho_saksofon.wav' },
-      { id: 'B', type: 'auraliz',    file: 'audio/auraliz/Saksofon_studio_leweucho_Aura.wav' },
-      { id: 'C', type: 'anchor',     file: 'audio/anchor/Saksofon_studio_leweucho_Aura_anchor.wav' }
-    ]
+    refFile: 'audio/ref/Saksofon_Studio_leweucho_ref.wav',
+    stimuli: {
+      aur48:      'audio/auraliz_48/Saksofon_studio_leweucho_Aura.wav',
+      aur24:      'audio/Auraliz_24/saksofon_Studio  S1R3A0 leweucho 24khz_Aura.wav',
+      aur12:      'audio/Auraliz_12/saksofon_Studio  S1R3A0 leweucho 12khz_Aura.wav',
+      hidden_ref: 'audio/ref/Saksofon_Studio_leweucho_ref.wav',
+      anchor:     'audio/anchor/saksofon_Studio  S1R3A0 leweucho 48khz_MONO_Aura.wav'
+    }
   },
   {
     id: 10,
     instrument: 'Akordeon',
     room: 'Korytarz ZEA',
     position: 'Oddalone',
-    refFile: 'audio/ref/korytarzZEA_daleko_akordeon.wav',
-    samples: [
-      { id: 'A', type: 'auraliz',    file: 'audio/auraliz/Akordeon_Korytarz_oddalone_Aura.wav' },
-      { id: 'B', type: 'anchor',     file: 'audio/anchor/Akordeon_Korytarz_oddalone_Aura_anchor.wav' },
-      { id: 'C', type: 'hidden_ref', file: 'audio/ref/korytarzZEA_daleko_akordeon.wav' }
-    ]
+    refFile: 'audio/ref/Akordeon_Korytarz_daleko_ref.wav',
+    stimuli: {
+      aur48:      'audio/auraliz_48/Akordeon_Korytarz_oddalone_Aura.wav',
+      aur24:      'audio/Auraliz_24/akordeon_Kor  S1R3A0 daleko 24khz_Aura.wav',
+      aur12:      'audio/Auraliz_12/akordeon_Kor  S1R3A0 daleko 12khz_Aura.wav',
+      hidden_ref: 'audio/ref/Akordeon_Korytarz_daleko_ref.wav',
+      anchor:     'audio/anchor/akordeon_Kor  S1R3A0 daleko 48khz_MONO_Aura.wav'
+    }
   }
 ];
+
+const TYPE_LABELS = {
+  aur48:      'Auralizacja 48 kHz',
+  aur24:      'Auralizacja 24 kHz',
+  aur12:      'Auralizacja 12 kHz',
+  hidden_ref: 'Ukryta referencja',
+  anchor:     'Kotwica (mono)'
+};
+
+const SAMPLE_LETTERS = ['A', 'B', 'C', 'D', 'E'];
 
 let currentTask = 0;
 let scores = {};
 let moved = {};
+let randomizedSamples = {};
 let audioObjects = {};
 let playingId = null;
-let playTimers = {};
+
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildRandomizedSamples() {
+  TASKS.forEach(task => {
+    const types = Object.keys(task.stimuli);
+    const shuffled = shuffleArray(types);
+    randomizedSamples[task.id] = shuffled.map((type, idx) => ({
+      letter: SAMPLE_LETTERS[idx],
+      type: type,
+      file: task.stimuli[type]
+    }));
+  });
+}
 
 function initScores() {
-  TASKS.forEach(t => {
-    scores[t.id] = {};
-    moved[t.id] = {};
-    t.samples.forEach(s => {
-      scores[t.id][s.id] = 50;
-      moved[t.id][s.id] = false;
+  TASKS.forEach(task => {
+    scores[task.id] = {};
+    moved[task.id] = {};
+    randomizedSamples[task.id].forEach(sample => {
+      scores[task.id][sample.letter] = 50;
+      moved[task.id][sample.letter] = false;
     });
   });
 }
 
 function preloadAudio() {
-  TASKS.forEach(t => {
-    const refKey = 'ref_' + t.id;
-    audioObjects[refKey] = new Audio(t.refFile);
-    audioObjects[refKey].onerror = () => console.warn('Brak pliku:', t.refFile);
-
-    t.samples.forEach(s => {
-      const key = t.id + '_' + s.id;
-      audioObjects[key] = new Audio(s.file);
-      audioObjects[key].onerror = () => console.warn('Brak pliku:', s.file);
+  TASKS.forEach(task => {
+    const refKey = 'ref_' + task.id;
+    audioObjects[refKey] = new Audio(task.refFile);
+    audioObjects[refKey].onerror = () => console.warn('Brak pliku:', task.refFile);
+    randomizedSamples[task.id].forEach(sample => {
+      const key = task.id + '_' + sample.letter;
+      audioObjects[key] = new Audio(sample.file);
+      audioObjects[key].onerror = () => console.warn('Brak pliku:', sample.file);
     });
   });
 }
@@ -929,9 +874,10 @@ function preloadAudio() {
 function startTest() {
   const name = document.getElementById('participant-name').value.trim();
   if (!name) {
-    alert('Proszę podać imię lub pseudonim uczestnika.');
+    alert('Podaj imię lub pseudonim.');
     return;
   }
+  buildRandomizedSamples();
   initScores();
   preloadAudio();
   currentTask = 0;
@@ -939,64 +885,53 @@ function startTest() {
   renderTask();
 }
 
+function showPhase(p) {
+  document.querySelectorAll('.phase').forEach(el => el.classList.remove('active'));
+  document.getElementById('phase-' + p).classList.add('active');
+}
+
+function resetTest() {
+  currentTask = 0;
+  scores = {};
+  moved = {};
+  randomizedSamples = {};
+  audioObjects = {};
+  playingId = null;
+  document.getElementById('participant-name').value = '';
+  showPhase('intro');
+}
+
 function stopAll() {
   Object.values(audioObjects).forEach(a => {
     a.pause();
     a.currentTime = 0;
   });
-  Object.keys(playTimers).forEach(k => { clearInterval(playTimers[k]); delete playTimers[k]; });
-  document.querySelectorAll('.play-btn, .sample-play-btn').forEach(b => b.classList.remove('playing'));
+  document.querySelectorAll('.play-btn, .sample-play').forEach(b => b.classList.remove('playing'));
   playingId = null;
 }
 
 function toggleAudio(key) {
-  const btnId = key === 'ref' ? 'play-ref' : 'play-' + key;
-  const fillId = 'fill-' + key;
-
   if (playingId === key) {
     stopAll();
     return;
   }
-
   stopAll();
   playingId = key;
-
+  const btnId = key === 'ref' ? 'play-ref' : 'play-' + key;
   const btn = document.getElementById(btnId);
   if (btn) btn.classList.add('playing');
-
-  const fill = document.getElementById(fillId);
-
   const actualKey = key === 'ref'
     ? 'ref_' + TASKS[currentTask].id
     : TASKS[currentTask].id + '_' + key;
-
   const actualAudio = audioObjects[actualKey];
   if (actualAudio) {
     actualAudio.currentTime = 0;
-    actualAudio.play().catch(() => {});
-
-    if (fill) {
-      playTimers[key] = setInterval(() => {
-        if (actualAudio.duration) {
-          const pct = (actualAudio.currentTime / actualAudio.duration) * 100;
-          fill.style.width = pct + '%';
-        }
-      }, 50);
-    }
-
+    actualAudio.play().catch(err => console.warn('Błąd odtwarzania:', err));
     actualAudio.onended = () => {
       if (btn) btn.classList.remove('playing');
-      if (fill) fill.style.width = '0%';
-      clearInterval(playTimers[key]);
-      delete playTimers[key];
       if (playingId === key) playingId = null;
     };
   }
-}
-
-function showPhase(p) {
-  document.querySelectorAll('.phase').forEach(el => el.classList.remove('active'));
-  document.getElementById('phase-' + p).classList.add('active');
 }
 
 function renderProgress() {
@@ -1009,79 +944,38 @@ function renderProgress() {
     `Zadanie ${currentTask + 1} z ${TASKS.length}`;
 }
 
-function generateWaveBars(containerId, count = 40) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  container.innerHTML = '';
-  for (let i = 0; i < count; i++) {
-    const bar = document.createElement('div');
-    bar.className = 'waveform-bar';
-    const h = 20 + Math.sin(i * 0.5) * 12 + Math.random() * 16;
-    bar.style.height = Math.round(h) + '%';
-    container.appendChild(bar);
-  }
-}
-
 function renderTask() {
   stopAll();
-  const t = TASKS[currentTask];
+  const task = TASKS[currentTask];
+  const samples = randomizedSamples[task.id];
 
-  document.getElementById('task-number-badge').textContent = `Zadanie ${t.id}`;
-  document.getElementById('task-title').textContent = `${t.instrument} — ${t.room}`;
-  document.getElementById('task-subtitle').textContent = `Pozycja mikrofonu: ${t.position}`;
-  document.getElementById('ref-label').textContent = `Nagranie referencyjne — ${t.instrument}, ${t.room}`;
-
-  generateWaveBars('bars-ref', 48);
-  document.getElementById('fill-ref').style.width = '0%';
-  document.getElementById('play-ref').classList.remove('playing');
+  document.getElementById('task-number-badge').textContent = `Zadanie ${task.id}`;
+  document.getElementById('task-title').textContent = `${task.instrument} — ${task.room}`;
+  document.getElementById('task-subtitle').textContent = `Pozycja mikrofonu: ${task.position}`;
+  document.getElementById('ref-l1').textContent = `${task.instrument} — ${task.room}, ${task.position}`;
 
   renderProgress();
 
-  const container = document.getElementById('samples-container');
-  container.innerHTML = t.samples.map(s => {
-    const val = scores[t.id][s.id];
-    const quality = getQualityLabel(val);
+  const container = document.getElementById('samples-grid');
+  container.innerHTML = samples.map(sample => {
+    const val = scores[task.id][sample.letter];
     const cls = val >= 70 ? 'high-score' : val <= 25 ? 'low-score' : '';
     return `
-    <div class="sample-row ${cls}" id="srow-${s.id}">
-      <div class="sample-top">
-        <div class="sample-id">${s.id}</div>
-        <button class="sample-play-btn" id="play-${s.id}" onclick="toggleAudio('${s.id}')">
-          <svg class="play-icon" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-          <div class="stop-icon-s"></div>
-        </button>
-        <div style="flex:1">
-          <div style="font-size:14px;font-weight:500;color:var(--text)">Próbka ${s.id}</div>
-        </div>
-        <div class="score-display">
-          <div class="score-number" id="score-num-${s.id}">${val}</div>
-          <div class="score-quality" id="score-qual-${s.id}">${quality}</div>
-        </div>
+    <div class="sample-col ${cls}" id="scol-${sample.letter}">
+      <div class="sample-letter">${sample.letter}</div>
+      <button class="sample-play" id="play-${sample.letter}" onclick="toggleAudio('${sample.letter}')">
+        <svg class="play-icon" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+        <div class="stop-icon-s"></div>
+      </button>
+      <div class="vslider-wrap">
+        <input type="range" class="vslider" min="0" max="100" step="1" value="${val}"
+          id="slider-${sample.letter}"
+          oninput="updateScore(${task.id}, '${sample.letter}', this.value)">
       </div>
-      <div class="slider-container">
-        <input type="range" min="0" max="100" step="1" value="${val}"
-          id="slider-${s.id}"
-          oninput="updateScore(${t.id}, '${s.id}', this.value)"
-          style="width:100%">
-        <div class="slider-labels">
-          <span>0 — Zła</span>
-          <span>20</span>
-          <span>40</span>
-          <span>60</span>
-          <span>80</span>
-          <span>100 — Doskonała</span>
-        </div>
-        <div class="waveform" style="margin-top:8px" id="waveform-${s.id}">
-          <div class="waveform-fill" id="fill-${s.id}"></div>
-          <div class="waveform-bars" id="bars-${s.id}"></div>
-        </div>
-      </div>
+      <div class="score-value" id="score-num-${sample.letter}">${val}</div>
+      <div class="score-quality" id="score-qual-${sample.letter}">${getQualityLabel(val)}</div>
     </div>`;
   }).join('');
-
-  t.samples.forEach(s => {
-    generateWaveBars('bars-' + s.id, 48);
-  });
 
   document.getElementById('btn-prev').style.display = currentTask > 0 ? 'inline-block' : 'none';
   document.getElementById('btn-next').textContent =
@@ -1092,33 +986,31 @@ function renderTask() {
 function getQualityLabel(val) {
   if (val >= 80) return 'Doskonała';
   if (val >= 60) return 'Dobra';
-  if (val >= 40) return 'Dostateczna';
+  if (val >= 40) return 'Dostat.';
   if (val >= 20) return 'Słaba';
   return 'Zła';
 }
 
-function updateScore(taskId, sampleId, val) {
+function updateScore(taskId, letter, val) {
   val = parseInt(val);
-  scores[taskId][sampleId] = val;
-  moved[taskId][sampleId] = true;
-
-  document.getElementById('score-num-' + sampleId).textContent = val;
-  document.getElementById('score-qual-' + sampleId).textContent = getQualityLabel(val);
-
-  const row = document.getElementById('srow-' + sampleId);
-  row.classList.toggle('high-score', val >= 70);
-  row.classList.toggle('low-score', val <= 25);
+  scores[taskId][letter] = val;
+  moved[taskId][letter] = true;
+  document.getElementById('score-num-' + letter).textContent = val;
+  document.getElementById('score-qual-' + letter).textContent = getQualityLabel(val);
+  const col = document.getElementById('scol-' + letter);
+  col.classList.toggle('high-score', val >= 70);
+  col.classList.toggle('low-score', val <= 25);
 }
 
 function nextTask() {
-  const t = TASKS[currentTask];
-  const allMoved = t.samples.every(s => moved[t.id][s.id]);
+  const task = TASKS[currentTask];
+  const samples = randomizedSamples[task.id];
+  const allMoved = samples.every(s => moved[task.id][s.letter]);
   if (!allMoved) {
     document.getElementById('validation-msg').style.display = 'inline';
     return;
   }
   document.getElementById('validation-msg').style.display = 'none';
-
   if (currentTask < TASKS.length - 1) {
     currentTask++;
     renderTask();
@@ -1139,80 +1031,47 @@ function prevTask() {
   }
 }
 
-function resetTest() {
-  currentTask = 0;
-  scores = {};
-  moved = {};
-  audioObjects = {};
-  playingId = null;
-  document.getElementById('participant-name').value = '';
-  showPhase('intro');
-}
-
 function showResults() {
-  const auralizScores = [];
-  const hiddenRefScores = [];
-  const anchorScores = [];
-
-  TASKS.forEach(t => {
-    t.samples.forEach(s => {
-      const v = scores[t.id][s.id];
-      if (s.type === 'auraliz') auralizScores.push(v);
-      if (s.type === 'hidden_ref') hiddenRefScores.push(v);
-      if (s.type === 'anchor') anchorScores.push(v);
+  const byType = { aur48: [], aur24: [], aur12: [], hidden_ref: [], anchor: [] };
+  TASKS.forEach(task => {
+    randomizedSamples[task.id].forEach(sample => {
+      byType[sample.type].push(scores[task.id][sample.letter]);
     });
   });
-
   const avg = arr => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : 0;
 
   document.getElementById('stats-grid').innerHTML = `
-    <div class="stat-card">
-      <div class="stat-label">Śr. auralizacja</div>
-      <div class="stat-val">${avg(auralizScores)}</div>
-      <div class="stat-sub">/ 100 pkt</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Ukryta referencja</div>
-      <div class="stat-val">${avg(hiddenRefScores)}</div>
-      <div class="stat-sub">/ 100 pkt</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Kotwica</div>
-      <div class="stat-val">${avg(anchorScores)}</div>
-      <div class="stat-sub">/ 100 pkt</div>
-    </div>`;
+    <div class="stat-card"><div class="stat-label">Aur. 48 kHz</div><div class="stat-val">${avg(byType.aur48)}</div><div class="stat-sub">/ 100</div></div>
+    <div class="stat-card"><div class="stat-label">Aur. 24 kHz</div><div class="stat-val">${avg(byType.aur24)}</div><div class="stat-sub">/ 100</div></div>
+    <div class="stat-card"><div class="stat-label">Aur. 12 kHz</div><div class="stat-val">${avg(byType.aur12)}</div><div class="stat-sub">/ 100</div></div>
+    <div class="stat-card"><div class="stat-label">Ukryta ref.</div><div class="stat-val">${avg(byType.hidden_ref)}</div><div class="stat-sub">/ 100</div></div>
+    <div class="stat-card"><div class="stat-label">Kotwica</div><div class="stat-val">${avg(byType.anchor)}</div><div class="stat-sub">/ 100</div></div>`;
 
-  let html = `<thead><tr>
-    <th>Zadanie</th><th>Instrument</th><th>Pomieszczenie</th>
-    <th>Próbka</th><th>Typ</th><th>Ocena</th>
-  </tr></thead><tbody>`;
-
-  TASKS.forEach(t => {
-    t.samples.forEach(s => {
-      const v = scores[t.id][s.id];
-      const typeLabel = s.type === 'auraliz' ? 'Auralizacja' : s.type === 'hidden_ref' ? 'Ukryta ref.' : 'Kotwica';
+  let html = `<thead><tr><th>#</th><th>Instrument</th><th>Pomieszczenie</th><th>Próbka</th><th>Typ (ukryty w teście)</th><th>Ocena</th></tr></thead><tbody>`;
+  TASKS.forEach(task => {
+    randomizedSamples[task.id].forEach(sample => {
+      const val = scores[task.id][sample.letter];
       html += `<tr>
-        <td>${t.id}</td>
-        <td>${t.instrument}</td>
-        <td>${t.room}</td>
-        <td style="font-family:'DM Mono',monospace">Próbka ${s.id}</td>
-        <td><span class="type-pill type-${s.type}">${typeLabel}</span></td>
-        <td>
-          <strong style="font-family:'DM Mono',monospace">${v}</strong>
-          <span class="score-bar" style="width:${Math.round(v * 0.7)}px"></span>
-        </td>
+        <td>${task.id}</td>
+        <td>${task.instrument}</td>
+        <td>${task.room}</td>
+        <td style="font-family:'JetBrains Mono',monospace">${sample.letter}</td>
+        <td><span class="type-pill type-${sample.type}">${TYPE_LABELS[sample.type]}</span></td>
+        <td><strong style="font-family:'JetBrains Mono',monospace">${val}</strong>
+          <span class="score-bar" style="width:${Math.round(val * 0.6)}px"></span></td>
       </tr>`;
     });
   });
-
   html += '</tbody>';
   document.getElementById('results-table').innerHTML = html;
 
-  const hiddenRefOk = avg(hiddenRefScores) >= 80;
-  const anchorOk = avg(anchorScores) <= 30;
+  const hiddenRefAvg = avg(byType.hidden_ref);
+  const anchorAvg = avg(byType.anchor);
+  const hiddenRefOk = hiddenRefAvg >= 90;
+  const anchorOk = anchorAvg <= 30;
   let vHTML = '';
-  vHTML += `<div>${hiddenRefOk ? '✓' : '✗'} Ukryta referencja: ${avg(hiddenRefScores)} pkt ${hiddenRefOk ? '(≥80 — poprawne)' : '(< 80 — możliwy błąd percepcji)'}</div>`;
-  vHTML += `<div>${anchorOk ? '✓' : '✗'} Kotwica: ${avg(anchorScores)} pkt ${anchorOk ? '(≤30 — poprawne)' : '(> 30 — możliwy błąd oceny)'}</div>`;
+  vHTML += `<div>${hiddenRefOk ? '✓' : '⚠'} Ukryta referencja: średnio <strong>${hiddenRefAvg}</strong> pkt ${hiddenRefOk ? '(≥90 — poprawne rozpoznanie)' : '(< 90 — możliwe odchylenia od standardu MUSHRA)'}</div>`;
+  vHTML += `<div>${anchorOk ? '✓' : '⚠'} Kotwica: średnio <strong>${anchorAvg}</strong> pkt ${anchorOk ? '(≤30 — poprawne wykrycie)' : '(> 30 — możliwe trudności z wykryciem kotwicy)'}</div>`;
   vHTML += `<div style="margin-top:8px;color:var(--text2)">Uczestnik: <strong>${document.getElementById('participant-name').value}</strong> | Doświadczenie: ${document.getElementById('exp-level').value || '—'} | Sprzęt: ${document.getElementById('headphone-type').value}</div>`;
   document.getElementById('validation-results').innerHTML = vHTML;
 }
@@ -1224,12 +1083,11 @@ function exportCSV() {
   const hwModel = document.getElementById('headphone-model').value || '';
   const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
-  let csv = 'Uczestnik,Doswiadczenie,Sprzet,Model,Data,Zadanie,Instrument,Pomieszczenie,Pozycja,Probka,Typ,Ocena\n';
-
-  TASKS.forEach(t => {
-    t.samples.forEach(s => {
-      csv += [name, exp, hw, hwModel, date, t.id, t.instrument, t.room, t.position,
-        'Probka ' + s.id, s.type, scores[t.id][s.id]].join(',') + '\n';
+  let csv = 'Uczestnik;Doswiadczenie;Sprzet;Model;Data;Zadanie;Instrument;Pomieszczenie;Pozycja;Probka;Typ;Ocena\n';
+  TASKS.forEach(task => {
+    randomizedSamples[task.id].forEach(sample => {
+      csv += [name, exp, hw, hwModel, date, task.id, task.instrument, task.room, task.position,
+        sample.letter, TYPE_LABELS[sample.type], scores[task.id][sample.letter]].join(';') + '\n';
     });
   });
 
